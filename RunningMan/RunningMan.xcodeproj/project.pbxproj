@@ -90,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */,
+				3A26AAB91CDB86DD0042D3F7 /* libsqlite3.tbd in Frameworks */,
 				3A26AAB01CDB152F0042D3F7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				04FD2E811CDB92A700832B81 /* CoreLocation.framework */,
+				3A26AAB81CDB86DD0042D3F7 /* libsqlite3.tbd */,
 				3A26AAAF1CDB152F0042D3F7 /* MapKit.framework */,
 				3A26AA651CDADCA40042D3F7 /* RunningMan */,
 				3A26AA7C1CDADCA40042D3F7 /* RunningManTests */,
