@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD2E811CDB92A700832B81 /* CoreLocation.framework */; };
 		3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */; };
 		3A26AA6E1CDADCA40042D3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A26AA6C1CDADCA40042D3F7 /* Main.storyboard */; };
 		3A26AA701CDADCA40042D3F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A26AA6F1CDADCA40042D3F7 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04FD2E811CDB92A700832B81 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A26AA631CDADCA40042D3F7 /* RunningMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A26AA6D1CDADCA40042D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */,
 				3A26AAB01CDB152F0042D3F7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +99,7 @@
 		3A26AA5A1CDADCA40042D3F7 = {
 			isa = PBXGroup;
 			children = (
+				04FD2E811CDB92A700832B81 /* CoreLocation.framework */,
 				3A26AAAF1CDB152F0042D3F7 /* MapKit.framework */,
 				3A26AA651CDADCA40042D3F7 /* RunningMan */,
 				3A26AA7C1CDADCA40042D3F7 /* RunningManTests */,
@@ -534,6 +538,7 @@
 				3A26AA8F1CDADCA40042D3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A26AA901CDADCA40042D3F7 /* Build configuration list for PBXNativeTarget "RunningManTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +547,7 @@
 				3A26AA921CDADCA40042D3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A26AA931CDADCA40042D3F7 /* Build configuration list for PBXNativeTarget "RunningManUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +556,7 @@
 				3A26AA951CDADCA40042D3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
