@@ -9,6 +9,18 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
+    
+    @IBOutlet weak var account : UITextField!
+    @IBOutlet weak var password : UITextField!
+    @IBOutlet weak var rePassword : UITextField!
+    
+    @IBAction func register(sender : AnyObject){
+        
+    }
+    
+    @IBAction func cancel(sender : AnyObject){
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

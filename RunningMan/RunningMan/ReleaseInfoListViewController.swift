@@ -9,6 +9,25 @@
 import UIKit
 
 class ReleaseInfoListViewController: UIViewController {
+    
+    @IBOutlet weak var content : UITextView!
+    
+    @IBAction func confirm(){
+        print("confirm")
+    }
+    
+    @IBAction func cancel(){
+        let toView : UIView = (storyboard?.instantiateViewControllerWithIdentifier("InfoListViewController").view)!
+        let fromView:UIView! = self.view
+        
+        print("any thing")
+        
+        // Transition using a page curl.
+        UIView.transitionFromView(fromView, toView:toView,duration:0.5,
+                                  options: UIViewAnimationOptions.TransitionFlipFromBottom,
+                                  completion:nil
+        );
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

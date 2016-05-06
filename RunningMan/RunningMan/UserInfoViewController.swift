@@ -9,6 +9,23 @@
 import UIKit
 
 class UserInfoViewController: UIViewController {
+    
+    @IBOutlet weak var account : UITextField!
+    @IBOutlet weak var name : UITextField!
+    @IBOutlet weak var gender : UITextField!
+    @IBOutlet weak var age : UITextField!
+    @IBOutlet weak var weight : UITextField!
+    @IBOutlet weak var height : UITextField!
+    
+    @IBOutlet weak var userImage : UIImageView!
+    
+    @IBAction func confirm(sender : AnyObject){
+        
+    }
+    
+    @IBAction func changePassword(sender : AnyObject){
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

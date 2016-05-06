@@ -23,6 +23,13 @@
 		3A26AAAC1CDAF0090042D3F7 /* ReleaseInfoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AAAB1CDAF0090042D3F7 /* ReleaseInfoListViewController.swift */; };
 		3A26AAAE1CDAF4AE0042D3F7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AAAD1CDAF4AE0042D3F7 /* RegisterViewController.swift */; };
 		3A26AAB01CDB152F0042D3F7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A26AAAF1CDB152F0042D3F7 /* MapKit.framework */; };
+		3A26AAB21CDB83A40042D3F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AAB11CDB83A40042D3F7 /* User.swift */; };
+		3A26AAB41CDB84FA0042D3F7 /* InfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AAB31CDB84FA0042D3F7 /* InfoList.swift */; };
+		3A26AAB61CDB85CD0042D3F7 /* StepsRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AAB51CDB85CD0042D3F7 /* StepsRecord.swift */; };
+		3A26AAB91CDB86DD0042D3F7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A26AAB81CDB86DD0042D3F7 /* libsqlite3.tbd */; };
+		3A26AABC1CDB87530042D3F7 /* Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AABB1CDB87530042D3F7 /* Bridging-Header.m */; };
+		3A26AABE1CDB8ABD0042D3F7 /* SqlConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AABD1CDB8ABD0042D3F7 /* SqlConnection.swift */; };
+		3A26AAC01CDB9D280042D3F7 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,14 @@
 		3A26AAAB1CDAF0090042D3F7 /* ReleaseInfoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseInfoListViewController.swift; sourceTree = "<group>"; };
 		3A26AAAD1CDAF4AE0042D3F7 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3A26AAAF1CDB152F0042D3F7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3A26AAB11CDB83A40042D3F7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3A26AAB31CDB84FA0042D3F7 /* InfoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoList.swift; sourceTree = "<group>"; };
+		3A26AAB51CDB85CD0042D3F7 /* StepsRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsRecord.swift; sourceTree = "<group>"; };
+		3A26AAB81CDB86DD0042D3F7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3A26AABA1CDB87530042D3F7 /* RunningMan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RunningMan-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A26AABB1CDB87530042D3F7 /* Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bridging-Header.m"; sourceTree = "<group>"; };
+		3A26AABD1CDB8ABD0042D3F7 /* SqlConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqlConnection.swift; sourceTree = "<group>"; };
+		3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A26AAB91CDB86DD0042D3F7 /* libsqlite3.tbd in Frameworks */,
 				3A26AAB01CDB152F0042D3F7 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +112,7 @@
 		3A26AA5A1CDADCA40042D3F7 = {
 			isa = PBXGroup;
 			children = (
+				3A26AAB81CDB86DD0042D3F7 /* libsqlite3.tbd */,
 				3A26AAAF1CDB152F0042D3F7 /* MapKit.framework */,
 				3A26AA651CDADCA40042D3F7 /* RunningMan */,
 				3A26AA7C1CDADCA40042D3F7 /* RunningManTests */,
@@ -118,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */,
+				3A26AAB71CDB86950042D3F7 /* Tools */,
 				3A26AA9A1CDAED0F0042D3F7 /* Models */,
 				3A26AA991CDAECEB0042D3F7 /* Controller */,
 				3A26AA6C1CDADCA40042D3F7 /* Main.storyboard */,
@@ -165,8 +183,22 @@
 		3A26AA9A1CDAED0F0042D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A26AAB11CDB83A40042D3F7 /* User.swift */,
+				3A26AAB31CDB84FA0042D3F7 /* InfoList.swift */,
+				3A26AAB51CDB85CD0042D3F7 /* StepsRecord.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		3A26AAB71CDB86950042D3F7 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				3A26AABB1CDB87530042D3F7 /* Bridging-Header.m */,
+				3A26AABA1CDB87530042D3F7 /* RunningMan-Bridging-Header.h */,
+				3A26AABD1CDB8ABD0042D3F7 /* SqlConnection.swift */,
+				3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */,
+			);
+			name = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,15 +333,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A26AAAC1CDAF0090042D3F7 /* ReleaseInfoListViewController.swift in Sources */,
+				3A26AAB41CDB84FA0042D3F7 /* InfoList.swift in Sources */,
 				3A26AAAE1CDAF4AE0042D3F7 /* RegisterViewController.swift in Sources */,
 				3A26AA971CDAEA1F0042D3F7 /* LoginViewController.swift in Sources */,
+				3A26AAC01CDB9D280042D3F7 /* NetworkTool.swift in Sources */,
 				3A26AAA81CDAEEF50042D3F7 /* StepsRecordViewController.swift in Sources */,
 				3A26AAA21CDAEE800042D3F7 /* InfoListViewController.swift in Sources */,
 				3A26AAA61CDAEECC0042D3F7 /* UserInfoViewController.swift in Sources */,
 				3A26AAA01CDAEE1E0042D3F7 /* ChangePasswordViewController.swift in Sources */,
 				3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */,
+				3A26AABE1CDB8ABD0042D3F7 /* SqlConnection.swift in Sources */,
 				3A26AAA41CDAEEBD0042D3F7 /* RankingViewController.swift in Sources */,
+				3A26AABC1CDB87530042D3F7 /* Bridging-Header.m in Sources */,
 				3A26AAAA1CDAEFEE0042D3F7 /* MainViewController.swift in Sources */,
+				3A26AAB21CDB83A40042D3F7 /* User.swift in Sources */,
+				3A26AAB61CDB85CD0042D3F7 /* StepsRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,10 +489,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RunningMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.RunningMan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RunningMan/RunningMan-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -462,10 +503,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RunningMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.RunningMan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RunningMan/RunningMan-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -534,6 +577,7 @@
 				3A26AA8F1CDADCA40042D3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A26AA901CDADCA40042D3F7 /* Build configuration list for PBXNativeTarget "RunningManTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +586,7 @@
 				3A26AA921CDADCA40042D3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A26AA931CDADCA40042D3F7 /* Build configuration list for PBXNativeTarget "RunningManUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +595,7 @@
 				3A26AA951CDADCA40042D3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
