@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="749.5" y="359.5"/>
         </scene>
-        <!--Root View Controller-->
+        <!--InfoList-->
         <scene sceneID="FTz-Ca-esh">
             <objects>
-                <tableViewController id="suG-O2-KGL" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InfoListViewController" title="InfoList" id="suG-O2-KGL" customClass="InfoListViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0ar-Am-uyZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,7 +154,7 @@
         <!--ReleaseInfoList-->
         <scene sceneID="uuj-Iv-zEI">
             <objects>
-                <viewController title="ReleaseInfoList" id="U1J-Mk-6Zv" customClass="ReleaseInfoListViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReleaseInfoListViewController" title="ReleaseInfoList" id="U1J-Mk-6Zv" customClass="ReleaseInfoListViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oNr-G8-7IR"/>
                         <viewControllerLayoutGuide type="bottom" id="6dO-DH-UhG"/>
@@ -166,10 +166,16 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-PM-Ii9">
                                 <rect key="frame" x="65" y="451" width="245" height="30"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirm" destination="U1J-Mk-6Zv" eventType="touchUpInside" id="TUQ-Zm-936"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49H-xr-mUo">
                                 <rect key="frame" x="65" y="512" width="245" height="30"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel" destination="U1J-Mk-6Zv" eventType="touchUpInside" id="Lzh-6x-ffx"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="text view" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nd3-Ic-gHD">
                                 <rect key="frame" x="20" y="88" width="335" height="306"/>
@@ -185,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIC-q5-57V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1308.5" y="2016.5"/>
+            <point key="canvasLocation" x="1868.5" y="2016.5"/>
         </scene>
         <!--Login-->
         <scene sceneID="e3C-v5-xaB">
@@ -288,6 +294,16 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egw-fi-VQq">
                                 <rect key="frame" x="58" y="394" width="258" height="30"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="register:" destination="5Y2-il-AWF" eventType="touchUpInside" id="Bli-En-MS8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUL-PQ-CGp">
+                                <rect key="frame" x="58" y="456" width="258" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="5Y2-il-AWF" eventType="touchUpInside" id="t55-zD-FkU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

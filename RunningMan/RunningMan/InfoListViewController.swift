@@ -8,17 +8,24 @@
 
 import UIKit
 
-class InfoListViewController: UIViewController {
+class InfoListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(InfoListViewController.insertNewObject))
+        self.navigationItem.rightBarButtonItem = addButton
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func insertNewObject(){
+        NSNotificationCenter.defaultCenter().postNotificationName("switchToReleaseInfoListView", object: nil)
     }
     
 
