@@ -15,7 +15,13 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(){
         
-        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
+        
+        let url = "http://192.168.0.16:8080/IOSApp/mobile/userLogin.action?userAccount=\(account.text!)&pwd=\(password.text!)"
+        
+        
+        print(NetworkTool.networkTool.urlRequest(url))
+        
+//        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
         
     }
     

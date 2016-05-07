@@ -13,6 +13,7 @@ class NetworkTool {
     var buffer : NSMutableData!
     var defaultConfigObject : NSURLSessionConfiguration
     var session : NSURLSession
+    var responseString : NSString = ""
     
     static let networkTool = NetworkTool()
     
@@ -21,32 +22,17 @@ class NetworkTool {
         session = NSURLSession(configuration : defaultConfigObject, delegate : nil, delegateQueue : NSOperationQueue.mainQueue())
     }
     
-    func urlRequest(url : String) -> NSDictionary{
+    func urlRequest(url : String, method : String = "GET") -> NSString{
         
         let nsurl : NSURL = NSURL(string : url)!
-        var resultDate : NSData = NSData()
-        var jsonResult : NSDictionary = NSDictionary()
-        
-        session.dataTaskWithURL(nsurl, completionHandler: {(data, responnse ,error) in
-            if (error != nil) {
-                print("Error %@",error!.userInfo);
-                print("Error description %@", error!.localizedDescription);
-                print("Error domain %@", error!.domain);
-            }
-            // Process the data
-            if (data != nil){
-                print(data!.length)
-                resultDate = data!
-            } else {
-                print("error")
-            }
-        }).resume()
-        do{
-            jsonResult = try NSJSONSerialization.JSONObjectWithData(resultDate, options: []) as! NSDictionary
-        } catch let error as NSError{
-            print(error.localizedDescription)
-        }
-        return jsonResult
+        let request = NSMutableURLRequest(URL: nsurl)
+        request.HTTPMethod = method
+        session.dataTaskWithRequest(request){
+            data, response, error in
+            self.responseString = NSString(data: data!, encoding:  NSUTF8StringEncoding)!
+            print(self.responseString)
+        }.resume()
+        return self.responseString
     }
     
 }
