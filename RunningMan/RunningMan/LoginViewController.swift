@@ -13,11 +13,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var account : UITextField!
     @IBOutlet weak var password : UITextField!
     
-    @IBAction func login(sender : AnyObject){
+    @IBAction func login(){
+        
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
         
     }
     
-    @IBAction func register(sender : AnyObject){
+    @IBAction func register(){
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("RegisterViewController"))!, animated: true, completion: nil)
         
     }
     

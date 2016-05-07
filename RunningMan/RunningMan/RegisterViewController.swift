@@ -20,6 +20,8 @@ class RegisterViewController: UIViewController {
     
     @IBAction func cancel(sender : AnyObject){
         
+        
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("LoginViewController"))!, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {

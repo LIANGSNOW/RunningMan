@@ -19,7 +19,7 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @IBAction func cancel(sender : AnyObject){
-        
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

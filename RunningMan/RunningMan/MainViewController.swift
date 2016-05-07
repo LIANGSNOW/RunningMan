@@ -13,7 +13,7 @@ import MapKit
 class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewDelegate	{
     
     @IBOutlet weak var mapTrack: MKMapView!
-     @IBOutlet weak var theLabel: UILabel!
+    @IBOutlet weak var theLabel: UILabel!
 
     var locationManager:CLLocationManager!
     var myLocations:[CLLocation] = []
@@ -35,7 +35,6 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
 
     }
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        print("111")
         if let oldLocationNew = oldLocation as CLLocation?{
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
@@ -44,8 +43,6 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
             mapTrack.addOverlay(polyline)
         }
         annotateMap(newLocation.coordinate)
-       
-         print("222")
     }
   
     
@@ -89,6 +86,10 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func setting(sender : AnyObject){
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("UserInfoViewController"))!, animated: true, completion: nil)
     }
     
 

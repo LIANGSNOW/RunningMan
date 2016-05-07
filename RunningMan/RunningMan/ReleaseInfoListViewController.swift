@@ -13,20 +13,14 @@ class ReleaseInfoListViewController: UIViewController {
     @IBOutlet weak var content : UITextView!
     
     @IBAction func confirm(){
-        print("confirm")
+        
     }
     
     @IBAction func cancel(){
-        let toView : UIView = (storyboard?.instantiateViewControllerWithIdentifier("InfoListViewController").view)!
-        let fromView:UIView! = self.view
+        let tabBarController : UITabBarController = storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         
-        print("any thing")
+        self.presentViewController(tabBarController, animated: true, completion: nil)
         
-        // Transition using a page curl.
-        UIView.transitionFromView(fromView, toView:toView,duration:0.5,
-                                  options: UIViewAnimationOptions.TransitionFlipFromBottom,
-                                  completion:nil
-        );
     }
 
     override func viewDidLoad() {

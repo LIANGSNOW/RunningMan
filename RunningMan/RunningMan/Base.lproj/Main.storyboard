@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="esJ-QK-txf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -30,6 +30,9 @@
                                             <rect key="frame" x="321" y="7" width="49" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Setting"/>
+                                            <connections>
+                                                <action selector="setting:" destination="9pv-A4-QxB" eventType="touchUpInside" id="7ze-CL-Lu3"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                 </items>
@@ -82,7 +85,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z1B-K4-fpg" id="QHu-l9-03W">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -117,7 +120,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4U-px-IqF" id="8Ev-6y-5U9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -193,62 +196,70 @@
             <point key="canvasLocation" x="1868.5" y="2016.5"/>
         </scene>
         <!--Login-->
-        <scene sceneID="e3C-v5-xaB">
+        <scene sceneID="tu8-S2-pVh">
             <objects>
-                <viewController title="Login" id="RIv-xP-jK6" customClass="LoginVeiwController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login" id="esJ-QK-txf" customClass="LoginViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1dT-0n-G17"/>
-                        <viewControllerLayoutGuide type="bottom" id="bIx-0j-kwO"/>
+                        <viewControllerLayoutGuide type="top" id="WAy-6R-FOk"/>
+                        <viewControllerLayoutGuide type="bottom" id="HYm-iW-fEd"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xHl-8A-OG6" customClass="LoginViewController">
+                    <view key="view" contentMode="scaleToFill" id="QuB-iP-TyS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXv-0H-NN8">
-                                <rect key="frame" x="48" y="196" width="64" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRk-cr-7n9">
+                                <rect key="frame" x="50" y="144" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKv-3I-kGp">
-                                <rect key="frame" x="38" y="287" width="74" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhG-w7-37y">
+                                <rect key="frame" x="40" y="224" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hXN-fp-6kc">
-                                <rect key="frame" x="151" y="192" width="204" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OMf-xK-xma">
-                                <rect key="frame" x="151" y="284" width="204" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33H-H7-mQ3">
-                                <rect key="frame" x="49" y="398" width="276" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wy1-MN-y2T">
+                                <rect key="frame" x="51" y="351" width="273" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login" destination="esJ-QK-txf" eventType="touchUpInside" id="K6M-Mz-zu3"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LH-2n-C01">
-                                <rect key="frame" x="49" y="464" width="276" height="30"/>
-                                <state key="normal" title="Regiester"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lqE-tT-n8Q">
+                                <rect key="frame" x="136" y="140" width="202" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-nm-g2M">
+                                <rect key="frame" x="136" y="220" width="202" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6W-Sv-Dnw">
+                                <rect key="frame" x="51" y="425" width="273" height="30"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="register" destination="esJ-QK-txf" eventType="touchUpInside" id="dCu-5r-LHg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="hgC-DH-ukf"/>
-                    <navigationItem key="navigationItem" id="Dzu-eo-FhA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="account" destination="lqE-tT-n8Q" id="0dA-hi-Zkw"/>
+                        <outlet property="password" destination="Y9p-nm-g2M" id="BJz-0G-Eq7"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gbh-kb-PbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWz-9R-L9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1225.5" y="408.5"/>
+            <point key="canvasLocation" x="-1194.5" y="506.5"/>
         </scene>
         <!--Regiester-->
         <scene sceneID="Mo7-Nj-bhK">
             <objects>
-                <viewController title="Regiester" id="5Y2-il-AWF" customClass="RegisterViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" title="Regiester" id="5Y2-il-AWF" customClass="RegisterViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="atf-FN-tef"/>
                         <viewControllerLayoutGuide type="bottom" id="RF2-du-EkG"/>
@@ -308,6 +319,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="account" destination="aW6-Fu-P6b" id="0lx-vJ-Tm6"/>
+                        <outlet property="password" destination="Dkl-YO-XtT" id="Bch-f9-qDG"/>
+                        <outlet property="rePassword" destination="8ph-kN-U8K" id="tZr-4y-KsD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrm-SC-oZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,7 +332,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -355,7 +371,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C87-OX-Eb1" id="e05-iD-Aso">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -373,7 +389,7 @@
         <!--ChangePassword-->
         <scene sceneID="j8t-nA-LH7">
             <objects>
-                <viewController title="ChangePassword" id="2Gf-fD-Otd" customClass="ChangePasswordViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewController" title="ChangePassword" id="2Gf-fD-Otd" customClass="ChangePasswordViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zXD-fA-fTF"/>
                         <viewControllerLayoutGuide type="bottom" id="Bbb-Tx-ORu"/>
@@ -385,6 +401,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-9l-6Sx">
                                 <rect key="frame" x="43" y="319" width="289" height="30"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirm:" destination="2Gf-fD-Otd" eventType="touchUpInside" id="x48-mi-N2T"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u03-pG-QvW">
                                 <rect key="frame" x="163" y="95" width="180" height="30"/>
@@ -422,6 +441,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-Ef-cgq">
                                 <rect key="frame" x="43" y="387" width="289" height="30"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="2Gf-fD-Otd" eventType="touchUpInside" id="goK-Vu-6hO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -432,6 +454,11 @@
                     <navigationItem key="navigationItem" title="Title" id="bL8-eV-PQO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="newPassword" destination="ZlF-Cd-wIo" id="mvC-xA-gww"/>
+                        <outlet property="oldPassword" destination="u03-pG-QvW" id="NpN-HN-U96"/>
+                        <outlet property="reNewPassword" destination="83D-zK-TM8" id="SGE-0m-pTQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xcz-qo-t0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -440,7 +467,7 @@
         <!--UserInfo-->
         <scene sceneID="qLq-pq-nVJ">
             <objects>
-                <viewController title="UserInfo" id="453-VB-sFa" customClass="UserInfoViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoViewController" title="UserInfo" id="453-VB-sFa" customClass="UserInfoViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mav-h6-jh1"/>
                         <viewControllerLayoutGuide type="bottom" id="0QY-4z-9qC"/>
@@ -519,12 +546,25 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHv-7e-FDv">
-                                <rect key="frame" x="46" y="523" width="280" height="30"/>
+                                <rect key="frame" x="46" y="515" width="280" height="30"/>
                                 <state key="normal" title="Confirm Change"/>
+                                <connections>
+                                    <action selector="confirm:" destination="453-VB-sFa" eventType="touchUpInside" id="2MA-Bn-hA3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-CS-yNK">
-                                <rect key="frame" x="48" y="578" width="278" height="30"/>
+                                <rect key="frame" x="48" y="563" width="278" height="30"/>
                                 <state key="normal" title="Change Password"/>
+                                <connections>
+                                    <action selector="changePassword:" destination="453-VB-sFa" eventType="touchUpInside" id="W0x-zr-Dir"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkw-61-Bx5">
+                                <rect key="frame" x="48" y="611" width="278" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="453-VB-sFa" eventType="touchUpInside" id="UUs-E3-f3c"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

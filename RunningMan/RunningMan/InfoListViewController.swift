@@ -25,7 +25,7 @@ class InfoListViewController: UITableViewController {
     }
     
     func insertNewObject(){
-        NSNotificationCenter.defaultCenter().postNotificationName("switchToReleaseInfoListView", object: nil)
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("ReleaseInfoListViewController"))!, animated: true, completion: nil)
     }
     
 

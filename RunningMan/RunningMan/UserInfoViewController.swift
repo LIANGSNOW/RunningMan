@@ -24,7 +24,11 @@ class UserInfoViewController: UIViewController {
     }
     
     @IBAction func changePassword(sender : AnyObject){
-        
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("ChangePasswordViewController"))!, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(sender : AnyObject){
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {

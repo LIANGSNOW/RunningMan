@@ -12,22 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    func switchToReleaseInfoListView(){
-        let fromView : UIView = (window?.rootViewController as! UITabBarController).view
-        let toView:UIView! = UIStoryboard(name: "Main", bundle:nil).instantiateViewControllerWithIdentifier("ReleaseInfoListViewController").view
-        // Transition using a page curl.
-        UIView.transitionFromView(fromView, toView:toView,duration:0.5,
-                                  options: UIViewAnimationOptions.TransitionFlipFromBottom,
-                                  completion:nil
-        );
-    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.switchToReleaseInfoListView), name: "switchToReleaseInfoListView", object: nil)
         
         return true
     }
