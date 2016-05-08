@@ -27,7 +27,10 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     var timer = NSTimer()
     var locationManager:CLLocationManager!
     var myLocations:[CLLocation] = []
-    var t = NSDate()
+    var currentTime = NSDate()
+    var healthStep:Double = 0
+    var healthMile:Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,36 +104,39 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         stopButton.hidden = false
         // t = NSDate()
     }
-    var aatest:Double = 0
-    var bbtest:Double = 0
+
     @IBAction func stop(sender: AnyObject) {
         timer.invalidate()
         startButton.hidden = false
         stopButton.hidden = true
         
-         print(t)
+        print(currentTime)
         
-        var aa:String = "";
-        HealthManager().recentSteps(t){steps, error in
-            //    print(steps)
-            // aa = String(format:"%.1f", steps)
-            self.aatest = steps
+        var stepOfString:String = "";
+        HealthManager().recentSteps(currentTime){steps, error in
+            self.healthStep = steps
         }
+   
+        stepOfString = String(format:"%.1f", healthStep)
+        aLabel.text = "\(stepOfString)"
         
-        //print(aatest)
-        aa = String(format:"%.1f", aatest)
-        aLabel.text = "\(aa)"
+        var mileOfString:String = "";
         
-        var bb:String = "";
+        self.testFunction(currentTime, function: getValue)
         
-        HealthManager().recentMiles(t){miles, error in
-            // print(miles)
-            self.bbtest = miles
-            
-        }
-        bb = String(format: "%.1f",bbtest)
-        bLabel.text = bb
+        mileOfString = String(format: "%.1f",healthMile)
+        bLabel.text = mileOfString
         //timer = nil
+    }
+    
+    func testFunction(currentTime : NSDate, function : (Double) -> ()){
+        HealthManager().recentMiles(currentTime){miles, error in
+            function(miles)
+        }
+    }
+    
+    func getValue(result : Double){
+        self.healthMile = result
     }
     
     
