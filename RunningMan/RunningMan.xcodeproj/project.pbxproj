@@ -31,6 +31,9 @@
 		3A26AABC1CDB87530042D3F7 /* Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AABB1CDB87530042D3F7 /* Bridging-Header.m */; };
 		3A26AABE1CDB8ABD0042D3F7 /* SqlConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AABD1CDB8ABD0042D3F7 /* SqlConnection.swift */; };
 		3A26AAC01CDB9D280042D3F7 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */; };
+		3A26AAFE1CDE51FE0042D3F7 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AAFD1CDE51FE0042D3F7 /* AlertMessage.swift */; };
+		3AB0294D1CDEF16F00479AE0 /* ApplicationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0294C1CDEF16F00479AE0 /* ApplicationSession.swift */; };
+		3AB029511CDF1E7000479AE0 /* InfoListDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB029501CDF1E7000479AE0 /* InfoListDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		3A26AABB1CDB87530042D3F7 /* Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bridging-Header.m"; sourceTree = "<group>"; };
 		3A26AABD1CDB8ABD0042D3F7 /* SqlConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SqlConnection.swift; sourceTree = "<group>"; };
 		3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
+		3A26AAFD1CDE51FE0042D3F7 /* AlertMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		3AB0294C1CDEF16F00479AE0 /* ApplicationSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationSession.swift; sourceTree = "<group>"; };
+		3AB029501CDF1E7000479AE0 /* InfoListDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoListDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +186,7 @@
 				3A26AAA51CDAEECC0042D3F7 /* UserInfoViewController.swift */,
 				3A26AA9F1CDAEE1E0042D3F7 /* ChangePasswordViewController.swift */,
 				3A26AAAD1CDAF4AE0042D3F7 /* RegisterViewController.swift */,
+				3AB029501CDF1E7000479AE0 /* InfoListDetailController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -201,6 +208,8 @@
 				3A26AABA1CDB87530042D3F7 /* RunningMan-Bridging-Header.h */,
 				3A26AABD1CDB8ABD0042D3F7 /* SqlConnection.swift */,
 				3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */,
+				3A26AAFD1CDE51FE0042D3F7 /* AlertMessage.swift */,
+				3AB0294C1CDEF16F00479AE0 /* ApplicationSession.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -338,6 +347,7 @@
 			files = (
 				3A26AAAC1CDAF0090042D3F7 /* ReleaseInfoListViewController.swift in Sources */,
 				3A26AAB41CDB84FA0042D3F7 /* InfoList.swift in Sources */,
+				3A26AAFE1CDE51FE0042D3F7 /* AlertMessage.swift in Sources */,
 				3A26AAAE1CDAF4AE0042D3F7 /* RegisterViewController.swift in Sources */,
 				3A26AA971CDAEA1F0042D3F7 /* LoginViewController.swift in Sources */,
 				3A26AAC01CDB9D280042D3F7 /* NetworkTool.swift in Sources */,
@@ -347,7 +357,9 @@
 				3A26AAA01CDAEE1E0042D3F7 /* ChangePasswordViewController.swift in Sources */,
 				3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */,
 				3A26AABE1CDB8ABD0042D3F7 /* SqlConnection.swift in Sources */,
+				3AB029511CDF1E7000479AE0 /* InfoListDetailController.swift in Sources */,
 				3A26AAA41CDAEEBD0042D3F7 /* RankingViewController.swift in Sources */,
+				3AB0294D1CDEF16F00479AE0 /* ApplicationSession.swift in Sources */,
 				3A26AABC1CDB87530042D3F7 /* Bridging-Header.m in Sources */,
 				3A26AAAA1CDAEFEE0042D3F7 /* MainViewController.swift in Sources */,
 				3A26AAB21CDB83A40042D3F7 /* User.swift in Sources */,

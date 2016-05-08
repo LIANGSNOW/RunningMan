@@ -14,16 +14,36 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password : UITextField!
     
     @IBAction func login(){
-        
-        
         let url = "http://192.168.0.16:8080/IOSApp/mobile/userLogin.action?userAccount=\(account.text!)&pwd=\(password.text!)"
-        
-        
-        print(NetworkTool.networkTool.urlRequest(url))
-        
-//        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
+        NetworkTool.networkTool.urlRequest(url, function: loginInformation)
         
     }
+    
+    func loginInformation(result : String){
+        switch result {
+        case "EMPTY_USER_ACCOUNT":
+            AlertMessage.alertFunction("please input the user account", uiViewController: self)
+            break
+        case "ACCOUNT_NOT_EXISTED":
+            AlertMessage.alertFunction("The user account doesn't exist", uiViewController: self)
+            break
+        case "PWD_ERROR":
+            AlertMessage.alertFunction("The password is incorrect", uiViewController: self)
+            break
+        case "ERROR":
+            AlertMessage.alertFunction("Unknown error", uiViewController: self)
+            break
+        case "SUCCESS":
+            ApplicationSession.loginedUserId = account.text!
+            self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    
     
     @IBAction func register(){
         self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("RegisterViewController"))!, animated: true, completion: nil)

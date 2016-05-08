@@ -13,7 +13,37 @@ class ReleaseInfoListViewController: UIViewController {
     @IBOutlet weak var content : UITextView!
     
     @IBAction func confirm(){
+        if(content.text == ""){
+            AlertMessage.alertFunction("The content couldn't be null", uiViewController: self)
+        }
         
+        let url = "http://192.168.0.16:8080/IOSApp/mobile/postMessage.action?userAccount=\(ApplicationSession.loginedUserId)&content=\(content.text!)"
+        NetworkTool.networkTool.urlRequest(url, function: releaseInfoList)
+    }
+    
+    func releaseInfoList(result : String){
+        
+        switch result {
+        case "EMPTY_USER_ACCOUNT":
+            AlertMessage.alertFunction("please input the user account", uiViewController: self)
+            break
+        case "ACCOUNT_NOT_EXISTED":
+            AlertMessage.alertFunction("The user account doesn't exist", uiViewController: self)
+            break
+        case "EMPTY_CONTENT":
+            AlertMessage.alertFunction("The password is incorrect", uiViewController: self)
+            break
+        case "ERROR":
+            AlertMessage.alertFunction("Unknown error", uiViewController: self)
+            break
+        case "SUCCESS":
+            //please add an page jump function here
+            
+            AlertMessage.alertFunction("Release Info List success", uiViewController: self)
+            break
+        default:
+            break
+        }
     }
     
     @IBAction func cancel(){

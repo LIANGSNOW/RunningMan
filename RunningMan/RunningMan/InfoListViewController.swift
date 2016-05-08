@@ -9,14 +9,62 @@
 import UIKit
 
 class InfoListViewController: UITableViewController {
+    
+    var infoListArray : NSMutableArray = NSMutableArray()
+    var infoList : [String : AnyObject] = [:]
+    var detailViewController: InfoListDetailController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(InfoListViewController.insertNewObject))
         self.navigationItem.rightBarButtonItem = addButton
         
+        
+        if let split = self.splitViewController {
+            let controllers = split.viewControllers
+            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? InfoListDetailController
+        }
+        
+        if detailViewController == nil{
+            detailViewController = storyboard?.instantiateViewControllerWithIdentifier("InfoListDetail") as? InfoListDetailController
+        }
+        
+        
+        var refreshControl: UIRefreshControl!
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        let url = "http://192.168.0.16:8080/IOSApp/mobile/viewAllPosts.action"
+        print(url)
+        
+        NetworkTool.networkTool.urlRequest(url, function: getInfoListsFromServer)
+        
+        self.infoListArray.addObject(String("test"))
+        self.infoListArray.addObject(String("test1"))
+        self.infoListArray.addObject(String("test2"))
+        
+        
+    }
+    
+    func refresh(){
+        print("refreshed!")
+    }
+    
+    func getInfoListsFromServer(result : String){
+        let data = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        do{
+            let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            print(jsonData.count)
+        } catch {
+            print("convert json string to array error")
+        }
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,5 +86,45 @@ class InfoListViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    // MARK: - Table View
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.infoListArray.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+
+        cell.textLabel?.text = "test message"
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return false
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+
 
 }

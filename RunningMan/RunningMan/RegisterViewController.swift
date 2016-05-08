@@ -16,12 +16,49 @@ class RegisterViewController: UIViewController {
     
     @IBAction func register(sender : AnyObject){
         
+        let jsonData = ["account" : self.account.text!, "password" : self.password.text!]
+        
+        if(password.text != rePassword.text){
+            AlertMessage.alertFunction("The password and re-password should be same", uiViewController: self)
+        }
+        
+        var dataString : NSString = ""
+        do{
+            let data = try NSJSONSerialization.dataWithJSONObject(jsonData, options: [])
+            dataString = NSString(data: data, encoding: NSUTF8StringEncoding)!
+        } catch{
+            print("serialization json data error")
+        }
+        let url : String = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/userRegister.action?userJson=" + (dataString as String)
+        NetworkTool.networkTool.urlRequest(url, function: registerNewUser)
     }
     
     @IBAction func cancel(sender : AnyObject){
-        
-        
         self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("LoginViewController"))!, animated: true, completion: nil)
+    }
+    
+    func registerNewUser(result : String){
+
+        switch result {
+        case "INVALID_JSON_STR":
+            AlertMessage.alertFunction("Unknown error", uiViewController: self)
+            break
+        case "ACCOUNT_ALREADY_EXISTED":
+            AlertMessage.alertFunction("The account already exists, please try another", uiViewController: self)
+            break
+        case "PWD_IS_NULL":
+            AlertMessage.alertFunction("The password couldn't be null", uiViewController: self)
+            break
+        case "ERROR":
+            AlertMessage.alertFunction("Unknown error", uiViewController: self)
+            break
+        case "SUCCESS":
+            self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("LoginViewController"))!, animated: true, completion: nil)
+            break
+        default:
+            break
+        }
+        
     }
 
     override func viewDidLoad() {

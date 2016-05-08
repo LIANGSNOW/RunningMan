@@ -15,6 +15,8 @@ class NetworkTool {
     var session : NSURLSession
     var responseString : NSString = ""
     
+    static let serverIP = "192.168.0.16:8080"
+    
     static let networkTool = NetworkTool()
     
     private init(){
@@ -22,17 +24,29 @@ class NetworkTool {
         session = NSURLSession(configuration : defaultConfigObject, delegate : nil, delegateQueue : NSOperationQueue.mainQueue())
     }
     
-    func urlRequest(url : String, method : String = "GET") -> NSString{
-        
-        let nsurl : NSURL = NSURL(string : url)!
+    func urlRequest(url : String, function : (String) -> (), method : String = "GET"){
+        let urlStr = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let nsurl : NSURL = NSURL(string : urlStr!)!
         let request = NSMutableURLRequest(URL: nsurl)
+        
         request.HTTPMethod = method
         session.dataTaskWithRequest(request){
-            data, response, error in
+            (data, response, error) -> Void in
             self.responseString = NSString(data: data!, encoding:  NSUTF8StringEncoding)!
-            print(self.responseString)
+            function(self.responseString as String)
         }.resume()
-        return self.responseString
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as? [String:AnyObject]
+                return json
+            } catch {
+                print("Something went wrong")
+            }
+        }
+        return nil
     }
     
 }
