@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040611DF1CDF26DE00F56EC9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040611DE1CDF26DE00F56EC9 /* HealthKit.framework */; };
+		040611E51CDF272A00F56EC9 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040611E41CDF272A00F56EC9 /* HealthManager.swift */; };
 		04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD2E811CDB92A700832B81 /* CoreLocation.framework */; };
 		3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */; };
 		3A26AA6E1CDADCA40042D3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A26AA6C1CDADCA40042D3F7 /* Main.storyboard */; };
@@ -54,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040611DD1CDF26D400F56EC9 /* RunningMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningMan.entitlements; sourceTree = "<group>"; };
+		040611DE1CDF26DE00F56EC9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		040611E41CDF272A00F56EC9 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		04FD2E811CDB92A700832B81 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A26AA631CDADCA40042D3F7 /* RunningMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */,
+				040611DF1CDF26DE00F56EC9 /* HealthKit.framework in Frameworks */,
 				3A26AAB91CDB86DD0042D3F7 /* libsqlite3.tbd in Frameworks */,
 				3A26AAB01CDB152F0042D3F7 /* MapKit.framework in Frameworks */,
 			);
@@ -121,6 +127,7 @@
 		3A26AA5A1CDADCA40042D3F7 = {
 			isa = PBXGroup;
 			children = (
+				040611DE1CDF26DE00F56EC9 /* HealthKit.framework */,
 				04FD2E811CDB92A700832B81 /* CoreLocation.framework */,
 				3A26AAB81CDB86DD0042D3F7 /* libsqlite3.tbd */,
 				3A26AAAF1CDB152F0042D3F7 /* MapKit.framework */,
@@ -144,6 +151,7 @@
 		3A26AA651CDADCA40042D3F7 /* RunningMan */ = {
 			isa = PBXGroup;
 			children = (
+				040611DD1CDF26D400F56EC9 /* RunningMan.entitlements */,
 				3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */,
 				3A26AAB71CDB86950042D3F7 /* Tools */,
 				3A26AA9A1CDAED0F0042D3F7 /* Models */,
@@ -194,6 +202,7 @@
 		3A26AA9A1CDAED0F0042D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				040611E41CDF272A00F56EC9 /* HealthManager.swift */,
 				3A26AAB11CDB83A40042D3F7 /* User.swift */,
 				3A26AAB31CDB84FA0042D3F7 /* InfoList.swift */,
 				3A26AAB51CDB85CD0042D3F7 /* StepsRecord.swift */,
@@ -282,6 +291,12 @@
 				TargetAttributes = {
 					3A26AA621CDADCA40042D3F7 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 6X894MU7DP;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					3A26AA781CDADCA40042D3F7 = {
 						CreatedOnToolsVersion = 7.3;
@@ -364,6 +379,7 @@
 				3A26AAAA1CDAEFEE0042D3F7 /* MainViewController.swift in Sources */,
 				3A26AAB21CDB83A40042D3F7 /* User.swift in Sources */,
 				3A26AAB61CDB85CD0042D3F7 /* StepsRecord.swift in Sources */,
+				040611E51CDF272A00F56EC9 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RunningMan/RunningMan.entitlements;
 				INFOPLIST_FILE = RunningMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.RunningMan;
@@ -520,6 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = RunningMan/RunningMan.entitlements;
 				INFOPLIST_FILE = RunningMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.RunningMan;
