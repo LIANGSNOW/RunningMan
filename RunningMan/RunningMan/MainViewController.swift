@@ -130,7 +130,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         bLabel.text = mileOfString
         //timer = nil
         
-        SqlConnection().createSteps("qwe",date: "123",step: stepOfString)
+        SqlConnection().createSteps("qwe",date: "123",step: "sss")
     }
     
     func testFunction(currentTime : NSDate, function : (Double) -> ()){

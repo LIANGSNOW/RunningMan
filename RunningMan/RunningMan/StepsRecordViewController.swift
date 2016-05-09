@@ -21,6 +21,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
         self.table.dataSource = self
 
         SqlConnection().displayAll(self.arrayStep)
+       // print(arrayStep[3])
         table.reloadData()
     }
 

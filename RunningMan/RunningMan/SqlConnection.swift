@@ -75,19 +75,18 @@ class SqlConnection{
 
     }
     
-    func displayAll(var arrayStep:String) {
+    func displayAll(var arrayStep:[String]) {
         
         while(sqlite3_step(displaySteps)  == SQLITE_ROW){
            
             let step_buf = sqlite3_column_text(displaySteps, 0)
-           //let step_buf = sqlite3_column_text(displaySteps, 0)
-            //arrayStep.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
-            arrayStep = String.fromCString(UnsafePointer<CChar>(step_buf))!
+            arrayStep.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
+            //arrayStep = String.fromCString(UnsafePointer<CChar>(step_buf))!
          //   arraytest.append(String.fromCString(UnsafePointer<CChar>(name_buf))!)
             //name.text = String.fromCString(UnsafePointer<CChar>(name_buf))
             //array.addObject(name_buf as! String)
             // items
-  
+           // print(arrayStep[4])
             
             
         }
