@@ -47,6 +47,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         // theLabel.text = "1321321"
         stopButton.hidden = true
         
+       // SqlConnection().prepareStartment()
+    
     }
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         if let oldLocationNew = oldLocation as CLLocation?{
@@ -127,6 +129,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         mileOfString = String(format: "%.1f",healthMile)
         bLabel.text = mileOfString
         //timer = nil
+        
+        SqlConnection().createSteps("qwe",date: "123",step: stepOfString)
     }
     
     func testFunction(currentTime : NSDate, function : (Double) -> ()){

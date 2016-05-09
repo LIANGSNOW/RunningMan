@@ -202,7 +202,6 @@
 		3A26AA9A1CDAED0F0042D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				040611E41CDF272A00F56EC9 /* HealthManager.swift */,
 				3A26AAB11CDB83A40042D3F7 /* User.swift */,
 				3A26AAB31CDB84FA0042D3F7 /* InfoList.swift */,
 				3A26AAB51CDB85CD0042D3F7 /* StepsRecord.swift */,
@@ -219,6 +218,7 @@
 				3A26AABF1CDB9D280042D3F7 /* NetworkTool.swift */,
 				3A26AAFD1CDE51FE0042D3F7 /* AlertMessage.swift */,
 				3AB0294C1CDEF16F00479AE0 /* ApplicationSession.swift */,
+				040611E41CDF272A00F56EC9 /* HealthManager.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
