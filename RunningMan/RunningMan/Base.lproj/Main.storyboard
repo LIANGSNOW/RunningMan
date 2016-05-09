@@ -75,7 +75,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Run" image="running30" selectedImage="running30" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="aLabel" destination="8Jb-nw-36O" id="wmd-lT-rlR"/>
                         <outlet property="bLabel" destination="qsO-BB-Vog" id="tBe-92-kNz"/>
@@ -126,7 +126,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Steps" image="steps30" selectedImage="steps30" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="table" destination="9CS-gD-VX9" id="MHs-qu-PPQ"/>
                     </connections>
@@ -263,11 +263,11 @@
             </objects>
             <point key="canvasLocation" x="887.5" y="3456.5"/>
         </scene>
-        <!--Item-->
+        <!--Post-->
         <scene sceneID="4Mi-6V-mPs">
             <objects>
                 <splitViewController id="oUQ-0D-SDQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R7r-kT-1aI"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="post30" selectedImage="post30" id="R7r-kT-1aI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="V6v-ZE-FwG" kind="relationship" relationship="masterViewController" id="5Sp-o0-Ve8"/>
@@ -524,7 +524,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="CFA-E1-Snu"/>
+                    <tabBarItem key="tabBarItem" title="Rank" image="ranking30" selectedImage="ranking30" id="CFA-E1-Snu"/>
                     <connections>
                         <outlet property="table" destination="Oje-73-cff" id="hFy-oy-6E3"/>
                     </connections>
@@ -716,7 +716,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="post30" width="30" height="30"/>
+        <image name="ranking30" width="30" height="30"/>
+        <image name="running30" width="30" height="30"/>
+        <image name="steps30" width="30" height="30"/>
     </resources>
 </document>
