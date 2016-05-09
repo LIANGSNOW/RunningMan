@@ -20,7 +20,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
         self.table.delegate = self
         self.table.dataSource = self
 
-        SqlConnection().displayAll(self.arrayStep)
+ //       SqlConnection().displayAll(self.arrayStep)
         table.reloadData()
     }
 

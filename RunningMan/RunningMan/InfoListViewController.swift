@@ -13,7 +13,7 @@ class InfoListViewController: UITableViewController {
     var infoListArray : NSMutableArray = NSMutableArray()
     var infoList : [String : AnyObject] = [:]
     var detailViewController: InfoListDetailController? = nil
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,22 +29,8 @@ class InfoListViewController: UITableViewController {
         if detailViewController == nil{
             detailViewController = storyboard?.instantiateViewControllerWithIdentifier("InfoListDetail") as? InfoListDetailController
         }
-        
-        
-        var refreshControl: UIRefreshControl!
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        
         let url = "http://192.168.0.16:8080/IOSApp/mobile/viewAllPosts.action"
-        print(url)
-        
         NetworkTool.networkTool.urlRequest(url, function: getInfoListsFromServer)
-        
-        self.infoListArray.addObject(String("test"))
-        self.infoListArray.addObject(String("test1"))
-        self.infoListArray.addObject(String("test2"))
-        
         
     }
     
@@ -56,17 +42,23 @@ class InfoListViewController: UITableViewController {
         let data = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         do{
             let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
-            print(jsonData.count)
+            
+            for item in (jsonData as! NSMutableArray){
+                let content : String = (item as! NSDictionary).valueForKey("content") as! String
+                self.infoListArray.addObject(content)
+            }
+            
+            //refresh the table view in the controller
+            self.tableView.reloadData()
         } catch {
             print("convert json string to array error")
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,16 +68,16 @@ class InfoListViewController: UITableViewController {
         self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("ReleaseInfoListViewController"))!, animated: true, completion: nil)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     // MARK: - Segues
     
@@ -112,8 +104,9 @@ class InfoListViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-
-        cell.textLabel?.text = "test message"
+        
+        cell.textLabel?.text = self.infoListArray.objectAtIndex(indexPath.row) as! String
+        //  print(self.infoListArray.objectAtIndex(indexPath.row) as! String)
         return cell
     }
     
@@ -125,6 +118,6 @@ class InfoListViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
     }
-
-
+    
+    
 }
