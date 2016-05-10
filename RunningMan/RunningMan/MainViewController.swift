@@ -31,6 +31,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     var currentTime = NSDate()
     var healthStep:Double = 0
     var healthMile:Double = 0
+    var userLatitude:Double = 0
+    var userLongtitude:Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +50,19 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         // theLabel.text = "1321321"
         stopButton.hidden = true
         
-       // SqlConnection().prepareStartment()
+        
+        
+        
+       
     
     }
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         if let oldLocationNew = oldLocation as CLLocation?{
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
+            userLatitude = oldCoordinates.latitude
+            userLongtitude  = oldCoordinates.longitude
+            //print(userLatitude ,  userLongtitude )
             var area = [oldCoordinates, newCoordinates]
             var polyline = MKPolyline(coordinates: &area, count: area.count)
             mapTrack.addOverlay(polyline)
@@ -62,21 +70,61 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         annotateMap(newLocation.coordinate)
     }
     
+    func addCurrentLocation(){
+         let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/updatePositionInfo.action?userAccount=\(ApplicationSession.loginedUserId)&latitude=\(userLatitude)&longitude=\(userLongtitude)"
+        NetworkTool.networkTool.urlRequest(url, function: addCurrentLocationCallBack)
+    }
+    
+    func addCurrentLocationCallBack(result : String){
+        
+        
+    }
+    
+    @IBAction func showNearPerson(){
+        addCurrentLocation()
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/getPeopleNearby.action?userAccount=\(ApplicationSession.loginedUserId)"
+        NetworkTool.networkTool.urlRequest(url, function: showNearPersonCallBcak)
+
+    }
+    
+    func showNearPersonCallBcak(result: String){
+        print(result)
+        let data = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        do{
+            let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            
+            for item in (jsonData as! NSMutableArray){
+                let userAccount : String = (item as! NSDictionary).valueForKey("account") as! String
+                let latitude = (item as! NSDictionary).valueForKey("latitude") as! String
+                let longitude = (item as! NSDictionary).valueForKey("longitude") as! String
+                
+                let latDou:Double = (latitude as NSString).doubleValue
+                let longDou:Double = (longitude as NSString).doubleValue
+                
+                let coordinate = CLLocationCoordinate2DMake(latDou, longDou)
+                let myHomePin = MKPointAnnotation()
+                myHomePin.coordinate = coordinate
+                myHomePin.title = userAccount
+                self.mapTrack.addAnnotation(myHomePin)
+            }
+
+        } catch {
+            print("convert json string to array error")
+        }
+    }
     
     func annotateMap(newCoordinate: CLLocationCoordinate2D){
         let latDelta:CLLocationDegrees = 0.01
         let longDelta: CLLocationDegrees = 0.01
         let theSpan:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta)
-        
         let myLocation:CLLocationCoordinate2D = newCoordinate
         let theRegion:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, theSpan)
         self.mapTrack.setRegion(theRegion, animated: true)
         self.mapTrack.mapType = MKMapType.Standard
         
-        /* let myHomePin = MKPointAnnotation()
-         myHomePin.coordinate = newCoordinate
-         myHomePin.title = "I am here"
-         self.mapTrack.addAnnotation(myHomePin)*/
+       
+        
+       
     }
     /*
      func mapView(mapView: MKMapView, viewForOverlay overlay: MKOverlay) -> MKOverlayView {
@@ -142,6 +190,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         startTime = NSDate.timeIntervalSinceReferenceDate()
         startButton.hidden = true
         stopButton.hidden = false
+        timer = NSTimer()
         // t = NSDate()
     }
 
@@ -149,9 +198,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         timer.invalidate()
         startButton.hidden = false
         stopButton.hidden = true
-        
-        print(currentTime)
-        
+
         var stepOfString:String = "";
         HealthManager().recentSteps(currentTime){steps, error in
             self.healthStep = steps
@@ -161,7 +208,6 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
             HealthManager().recentSteps(currentTime){steps, error in
                 self.healthStep = steps
             }
-            print("yes")
         }
         
         
@@ -177,7 +223,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
 //        bLabel.text = mileOfString
 //        //timer = nil
         
-        SqlConnection().createSteps("qwe",date: "123",step: stepOfString,timeperiod: tiemPeriod)
+        
+        SqlConnection().createSteps(ApplicationSession.loginedUserId,date: "123",step: stepOfString,timeperiod: tiemPeriod)
     }
     
     func testFunction(currentTime : NSDate, function : (Double) -> ()){

@@ -12,7 +12,9 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     
     @IBOutlet weak var table: UITableView!
     var refreshControl: UIRefreshControl!
-    var arrayStep:[String] = []
+    var displayArray:[String] = []
+    var timeArray:[String] = []
+    var stepArray:[String] = []
    // var tableViewController = UITableViewController()
     
 
@@ -25,6 +27,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
         self.table.delegate = self
         self.table.dataSource = self
         SqlConnection().displayAll(updateArray)
+        addDisplayArray()
         table.reloadData()
         //table = tableViewController.tableView
         //tableViewController.refreshControl = self.refreshControl
@@ -43,9 +46,10 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     
    
     func refresh(sender:AnyObject) {
-       self.table.delegate = self
+        self.table.delegate = self
         self.table.dataSource = self
         SqlConnection().displayAll(updateArray)
+        addDisplayArray()
         table.reloadData()
         self.refreshControl.endRefreshing()
     }
@@ -60,12 +64,25 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
 //        refreshControl.addSubview(customView)
     }
     
-    func updateArray(array : [String]){
-        self.arrayStep.removeAll()
-        for item in array{
-            self.arrayStep.append(item)
+    func updateArray(arraytime : [String],arraystep:[String]){
+        self.timeArray.removeAll()
+        self.stepArray.removeAll()
+        for item in arraytime{
+            self.timeArray.append(item)
+        }
+        for item in arraystep{
+            self.stepArray.append(item)
         }
         //table.reloadData()
+    }
+    
+    func  addDisplayArray() {
+        self.displayArray.removeAll()
+        var i:Int = 0
+        for item in timeArray{
+            displayArray.append("Time:"+item+"Steps: "+stepArray[i])
+            i += 1
+        }
     }
     
 
@@ -90,13 +107,13 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int{
-        return self.arrayStep.count
+        return self.displayArray.count
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!{
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath: indexPath)
         let row = indexPath.row as Int
-        cell.textLabel!.text = arrayStep[row]
+        cell.textLabel!.text = displayArray[row]
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

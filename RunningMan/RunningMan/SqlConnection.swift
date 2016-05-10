@@ -13,8 +13,8 @@ class SqlConnection{
     
     //define variables
     
-    //let docsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/RunningMan.sqlite"
-    let docsDir = "/Users/mac/RunningTest.sqlite"
+    let docsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/RunningMan.sqlite"
+    //let docsDir = "/Users/mac/RunningTest.sqlite"
     var database : COpaquePointer = nil
     var insertSteps: COpaquePointer = nil
     var displaySteps: COpaquePointer = nil
@@ -25,6 +25,7 @@ class SqlConnection{
 
     init(){
         if(sqlite3_open(docsDir, &database) == SQLITE_OK){
+            let sqldelete = "DROP TABLE RUNNING_MAN"
             let sql = "CREATE TABLE IF NOT EXISTS RUNNING_MAN(ID INTEGER PRIMARY KEY AUTOINCREMENT, ACCOUNT TEXT, DATE TEXT, STEPS_COUNT TEXT,TIMEPERIOD TEXT)"
             
             if(sqlite3_exec(database, sql, nil, nil, nil) != SQLITE_OK){
@@ -77,15 +78,16 @@ class SqlConnection{
 
     }
     
-    func displayAll(function : ([String]) -> ()) {
+    func displayAll(function : ([String],[String]) -> ()) {
+        var arrayTime : [String] = []
         var arrayStep : [String] = []
         while(sqlite3_step(displaySteps)  == SQLITE_ROW){
            
             let step_buf = sqlite3_column_text(displaySteps, 0)
             let period_buf = sqlite3_column_text(displaySteps, 1)
-            arrayStep.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
+            arrayTime.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
             arrayStep.append(String.fromCString(UnsafePointer<CChar>(period_buf))!)
-            function(arrayStep)
+            function(arrayStep,arrayTime)
         }
     
         sqlite3_reset(displaySteps)
