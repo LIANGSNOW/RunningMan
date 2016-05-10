@@ -76,7 +76,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
 
         NetworkTool.networkTool.urlRequest(url, function: modifyUserInfo, method: "POST")
     }
-    
+
     func setUserInformation(result : String){
         let dictionary = NetworkTool.networkTool.convertStringToDictionary(result)
         
@@ -85,9 +85,11 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.age.text = (dictionary!["age"] as! String)
         if((dictionary!["img"] as! String) != ""){
             let base64String = dictionary!["img"] as! String
-            //self.userImage.image = self.convertBase64ToImage(base64String)
+            
+            self.userImage.image = self.convertBase64ToImage(base64String)
         }
     }
+
     
     func getUserInfoFromServer(){
         let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/viewUserByAccount.action?userAccount=\(ApplicationSession.loginedUserId)"

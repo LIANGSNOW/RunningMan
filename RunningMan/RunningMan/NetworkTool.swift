@@ -25,9 +25,14 @@ class NetworkTool {
     }
     
     func urlRequest(url : String, function : (String) -> (), method : String = "GET"){
-        let urlStr = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+//        let urlStr = url.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let s = NSCharacterSet.URLQueryAllowedCharacterSet().mutableCopy()
+        s.addCharactersInString("+")
+        let urlStr = url.stringByAddingPercentEncodingWithAllowedCharacters(s as! NSCharacterSet)
         let nsurl : NSURL = NSURL(string : urlStr!)!
         let request = NSMutableURLRequest(URL: nsurl)
+        
+        print(urlStr)
         
         request.HTTPMethod = method
         session.dataTaskWithRequest(request){
