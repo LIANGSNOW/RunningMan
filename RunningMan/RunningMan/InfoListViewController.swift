@@ -29,11 +29,17 @@ class InfoListViewController: UITableViewController {
         }
         let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/viewAllPosts.action"
         NetworkTool.networkTool.urlRequest(url, function: getInfoListsFromServer)
-        
+        self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
     
-    func refresh(){
-        print("refreshed!")
+    func refresh(sender:AnyObject)
+    {
+        infoListArray.removeAllObjects()
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/viewAllPosts.action"
+        NetworkTool.networkTool.urlRequest(url, function: getInfoListsFromServer)
+        
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func getInfoListsFromServer(result : String){
