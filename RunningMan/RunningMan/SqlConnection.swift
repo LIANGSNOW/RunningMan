@@ -25,6 +25,7 @@ class SqlConnection{
 
     init(){
         if(sqlite3_open(docsDir, &database) == SQLITE_OK){
+            let sqldelete = "DROP TABLE RUNNING_MAN"
             let sql = "CREATE TABLE IF NOT EXISTS RUNNING_MAN(ID INTEGER PRIMARY KEY AUTOINCREMENT, ACCOUNT TEXT, DATE TEXT, STEPS_COUNT TEXT,TIMEPERIOD TEXT)"
             
             if(sqlite3_exec(database, sql, nil, nil, nil) != SQLITE_OK){
