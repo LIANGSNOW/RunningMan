@@ -13,8 +13,8 @@ class SqlConnection{
     
     //define variables
     
-    //let docsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/RunningMan.sqlite"
-    let docsDir = "/Users/mac/RunningTest.sqlite"
+    let docsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/RunningMan.sqlite"
+    //let docsDir = "/Users/mac/RunningTest.sqlite"
     var database : COpaquePointer = nil
     var insertSteps: COpaquePointer = nil
     var displaySteps: COpaquePointer = nil
