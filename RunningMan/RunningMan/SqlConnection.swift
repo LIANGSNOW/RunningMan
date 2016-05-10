@@ -25,7 +25,7 @@ class SqlConnection{
 
     init(){
         if(sqlite3_open(docsDir, &database) == SQLITE_OK){
-            let sql = "CREATE TABLE IF NOT EXISTS RUNNING_MAN(ID INTEGER PRIMARY KEY AUTOINCREMENT, ACCOUNT TEXT, DATE TEXT, STEPS_COUNT TEXT)"
+            let sql = "CREATE TABLE IF NOT EXISTS RUNNING_MAN(ID INTEGER PRIMARY KEY AUTOINCREMENT, ACCOUNT TEXT, DATE TEXT, STEPS_COUNT TEXT,TIMEPERIOD TEXT)"
             
             if(sqlite3_exec(database, sql, nil, nil, nil) != SQLITE_OK){
                 print("Failed to create table")
@@ -42,25 +42,27 @@ class SqlConnection{
     func prepareStartment(){
         var sqlString : String
       
-        sqlString = "INSERT INTO RUNNING_MAN(account,date,steps_count) VALUES (?,?,?)"
+        sqlString = "INSERT INTO RUNNING_MAN(account,date,steps_count,timeperiod) VALUES (?,?,?,?)"
         var cSql = sqlString.cStringUsingEncoding(NSUTF8StringEncoding)
         sqlite3_prepare_v2(database, cSql!, -1, &insertSteps, nil)
 
-        sqlString = "SELECT steps_count FROM RUNNING_MAN"
+        sqlString = "SELECT steps_count,timeperiod FROM RUNNING_MAN"
         cSql = sqlString.cStringUsingEncoding(NSUTF8StringEncoding)
         sqlite3_prepare_v2(database, cSql!, -1, &displaySteps, nil)
 
     }
     
-    func createSteps(account:String,date:String,step:String ){
+    func createSteps(account:String,date:String,step:String,timeperiod:String ){
         
         let accountStr = account as NSString?
         let dateStr = date as NSString?
         let stepStr = step as NSString?
+        let periodStr = timeperiod as NSString?
         
         sqlite3_bind_text(insertSteps, 1, accountStr!.UTF8String, -1, SQLITE_TRANSIENT)
         sqlite3_bind_text(insertSteps, 2, dateStr!.UTF8String, -1, SQLITE_TRANSIENT)
         sqlite3_bind_text(insertSteps, 3, stepStr!.UTF8String, -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(insertSteps, 4, periodStr!.UTF8String, -1, SQLITE_TRANSIENT)
         if(sqlite3_step(insertSteps) == SQLITE_DONE){
            print("Contact added")
         }
@@ -75,21 +77,15 @@ class SqlConnection{
 
     }
     
-    func displayAll(var arrayStep:String) {
-        
+    func displayAll(function : ([String]) -> ()) {
+        var arrayStep : [String] = []
         while(sqlite3_step(displaySteps)  == SQLITE_ROW){
            
             let step_buf = sqlite3_column_text(displaySteps, 0)
-           //let step_buf = sqlite3_column_text(displaySteps, 0)
-            //arrayStep.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
-            arrayStep = String.fromCString(UnsafePointer<CChar>(step_buf))!
-         //   arraytest.append(String.fromCString(UnsafePointer<CChar>(name_buf))!)
-            //name.text = String.fromCString(UnsafePointer<CChar>(name_buf))
-            //array.addObject(name_buf as! String)
-            // items
-  
-            
-            
+            let period_buf = sqlite3_column_text(displaySteps, 1)
+            arrayStep.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
+            arrayStep.append(String.fromCString(UnsafePointer<CChar>(period_buf))!)
+            function(arrayStep)
         }
     
         sqlite3_reset(displaySteps)

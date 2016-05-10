@@ -10,6 +10,8 @@ import UIKit
 
 class InfoListViewController: UITableViewController {
     
+    @IBOutlet weak var newButton:UIBarButtonItem!
+    
     var infoListArray : NSMutableArray = NSMutableArray()
     var infoList : [String : AnyObject] = [:]
     var detailViewController: InfoListDetailController? = nil
@@ -17,8 +19,8 @@ class InfoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(InfoListViewController.insertNewObject))
-        self.navigationItem.rightBarButtonItem = addButton
+       // let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(InfoListViewController.insertNewObject))
+       // self.navigationItem.rightBarButtonItem = addButton
         
         
         if let split = self.splitViewController {
