@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="esJ-QK-txf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -60,12 +60,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsO-BB-Vog">
-                                <rect key="frame" x="50" y="553" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:    xx:xx:xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgZ-mC-Zbc">
                                 <rect key="frame" x="147" y="544" width="228" height="74"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -78,7 +72,6 @@
                     <tabBarItem key="tabBarItem" title="Run" image="running30" selectedImage="running30" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="aLabel" destination="8Jb-nw-36O" id="wmd-lT-rlR"/>
-                        <outlet property="bLabel" destination="qsO-BB-Vog" id="tBe-92-kNz"/>
                         <outlet property="mapTrack" destination="RX1-2R-4Eo" id="90s-Yd-5FK"/>
                         <outlet property="startButton" destination="wx9-Ub-KjI" id="73A-ln-iiw"/>
                         <outlet property="stopButton" destination="Rhq-Ge-7YB" id="3c6-et-p0t"/>
@@ -92,7 +85,7 @@
         <!--StepsRecord-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController title="StepsRecord" id="8rJ-Kc-sve" customClass="StepsRecordViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StepsRecord" wantsFullScreenLayout="YES" id="8rJ-Kc-sve" customClass="StepsRecordViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -101,16 +94,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLx-08-g7v">
-                                <rect key="frame" x="0.0" y="20" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="weekly" id="HcR-ek-7W7"/>
-                                    <tabBarItem title="monthly" id="tpL-9G-XDh"/>
-                                </items>
-                            </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-gD-VX9">
-                                <rect key="frame" x="0.0" y="69" width="375" height="549"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Z1B-K4-fpg">
@@ -122,13 +107,20 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="ekN-a5-1HY"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="xFE-lK-DF4"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Steps" image="steps30" selectedImage="steps30" id="cPa-gy-q4n"/>
+                    <keyCommands>
+                        <keyCommand/>
+                    </keyCommands>
                     <connections>
-                        <outlet property="table" destination="9CS-gD-VX9" id="MHs-qu-PPQ"/>
+                        <outlet property="table" destination="9CS-gD-VX9" id="Hwg-Vo-UvJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -181,7 +173,7 @@
         <!--Master-->
         <scene sceneID="YKB-VC-sHM">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="fXj-FP-wRO" customClass="InfoListViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Master" id="fXj-FP-wRO" customClass="InfoListViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="I70-2D-jBh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,6 +198,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="bvS-bp-xDH"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kJk-mI-o0P">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIF-wk-lBZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

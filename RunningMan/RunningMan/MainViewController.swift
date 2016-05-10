@@ -17,7 +17,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     @IBOutlet weak var mapTrack: MKMapView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var aLabel: UILabel!
-    @IBOutlet weak var bLabel: UILabel!
+   
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
@@ -25,6 +25,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     
     var startTime = NSTimeInterval()
     var timer = NSTimer()
+    var tiemPeriod:String = "";
     var locationManager:CLLocationManager!
     var myLocations:[CLLocation] = []
     var currentTime = NSDate()
@@ -98,53 +99,6 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     }
     
     
-    @IBAction func start(sender: AnyObject) {
-        let aSelector : Selector = "updateTime"
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate()
-        startButton.hidden = true
-        stopButton.hidden = false
-        // t = NSDate()
-    }
-
-    @IBAction func stop(sender: AnyObject) {
-        timer.invalidate()
-        startButton.hidden = false
-        stopButton.hidden = true
-        
-        print(currentTime)
-        
-        var stepOfString:String = "";
-        HealthManager().recentSteps(currentTime){steps, error in
-            self.healthStep = steps
-        }
-   
-        stepOfString = String(format:"%.1f", healthStep)
-        aLabel.text = "\(stepOfString)"
-        
-        var mileOfString:String = "";
-        
-        self.testFunction(currentTime, function: getValue)
-        
-        mileOfString = String(format: "%.1f",healthMile)
-        bLabel.text = mileOfString
-        //timer = nil
-        
-        SqlConnection().createSteps("qwe",date: "123",step: "sss")
-    }
-    
-    func testFunction(currentTime : NSDate, function : (Double) -> ()){
-        HealthManager().recentMiles(currentTime){miles, error in
-            function(miles)
-        }
-    }
-    
-    func getValue(result : Double){
-        self.healthMile = result
-    }
-    
-    
-    
     func updateTime() {
         
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
@@ -178,8 +132,65 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
         
         timeLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
-        
+        tiemPeriod = "\(strMinutes):\(strSeconds):\(strFraction)"
     }
+
+    
+    @IBAction func start(sender: AnyObject) {
+        let aSelector : Selector = "updateTime"
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        startTime = NSDate.timeIntervalSinceReferenceDate()
+        startButton.hidden = true
+        stopButton.hidden = false
+        // t = NSDate()
+    }
+
+    @IBAction func stop(sender: AnyObject) {
+        timer.invalidate()
+        startButton.hidden = false
+        stopButton.hidden = true
+        
+        print(currentTime)
+        
+        var stepOfString:String = "";
+        HealthManager().recentSteps(currentTime){steps, error in
+            self.healthStep = steps
+        }
+        
+        if(healthStep == 0.0){
+            HealthManager().recentSteps(currentTime){steps, error in
+                self.healthStep = steps
+            }
+            print("yes")
+        }
+        
+        
+        stepOfString = String(format:"%.1f", healthStep)
+        aLabel.text = "\(stepOfString)"
+        
+        
+//        var mileOfString:String = "";
+//        
+//        self.testFunction(currentTime, function: getValue)
+//        
+//        mileOfString = String(format: "%.1f",healthMile)
+//        bLabel.text = mileOfString
+//        //timer = nil
+        
+        SqlConnection().createSteps("qwe",date: "123",step: stepOfString,timeperiod: tiemPeriod)
+    }
+    
+    func testFunction(currentTime : NSDate, function : (Double) -> ()){
+        HealthManager().recentMiles(currentTime){miles, error in
+            function(miles)
+        }
+    }
+    
+    func getValue(result : Double){
+        self.healthMile = result
+    }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
