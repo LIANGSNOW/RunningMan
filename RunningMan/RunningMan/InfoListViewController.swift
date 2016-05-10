@@ -31,7 +31,7 @@ class InfoListViewController: UITableViewController {
         if detailViewController == nil{
             detailViewController = storyboard?.instantiateViewControllerWithIdentifier("InfoListDetail") as? InfoListDetailController
         }
-        let url = "http://192.168.0.16:8080/IOSApp/mobile/viewAllPosts.action"
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/viewAllPosts.action"
         NetworkTool.networkTool.urlRequest(url, function: getInfoListsFromServer)
         
     }

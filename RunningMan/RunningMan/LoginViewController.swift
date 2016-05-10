@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var password : UITextField!
     
     @IBAction func login(){
-        let url = "http://192.168.0.16:8080/IOSApp/mobile/userLogin.action?userAccount=\(account.text!)&pwd=\(password.text!)"
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/userLogin.action?userAccount=\(account.text!)&pwd=\(password.text!)"
         NetworkTool.networkTool.urlRequest(url, function: loginInformation)
         
     }
