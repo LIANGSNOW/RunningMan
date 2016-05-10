@@ -20,40 +20,85 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var userImage : UIImageView!
     var imagePicker = UIImagePickerController()
     
-    @IBAction func confirm(sender : AnyObject){
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if(self.userImage.image != nil){
-            let imageData = UIImagePNGRepresentation(self.userImage.image!)
-            let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-            print(base64String.characters.count)
-        } else{
-            print("nil")
-        }
+        // Do any additional setup after loading the view.
+        self.getUserInfoFromServer()
+        self.account.text! = ApplicationSession.loginedUserId
     }
     
-    func sendMessageToServer(){
-        let jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!]
+    func convertImageToBase64(image: UIImage) -> String {
+        
+        var imageData = UIImagePNGRepresentation(image)
+        let base64String = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
+        return base64String
+        
+    }
+
+    func convertBase64ToImage(base64String: String) -> UIImage {
+        
+        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0) )
+        
+        let decodedimage = UIImage(data: decodedData!)
+        
+        return decodedimage!
+        
+    }
+    
+    @IBAction func confirm(sender : AnyObject){
+        
+        var jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!]
         
         var dataString : NSString = ""
+        
+        if(self.userImage.image != nil){
+            jsonData["img"] = convertImageToBase64(self.userImage.image!)
+        } else {
+            jsonData["img"] = ""
+        }
+        
         do{
             let data = try NSJSONSerialization.dataWithJSONObject(jsonData, options: [])
             dataString = NSString(data: data, encoding: NSUTF8StringEncoding)!
         } catch{
             print("serialization json data error")
         }
-        let url : String = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/userModify.action?userJson=" + (dataString as String)
-        NetworkTool.networkTool.urlRequest(url, function: modifyUserInfo)
+        let start : String = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/userModify.action?userJson=" +
+            "{\"account\":\"" + ApplicationSession.loginedUserId + "\","
+        
+        let anotherString : String =  "\"name\":\"" + jsonData["name"]! + "\","
+        let anotherString1 : String = "\"age\":\"" + jsonData["age"]! + "\","
+        let anotherString2 : String =  "\"sex\":\"" + jsonData["sex"]! + "\","
+        let anotherString3 : String = "\"img\":\"" + jsonData["img"]! + "\"}"
+        
+        let url = start + anotherString + anotherString1 + anotherString2 + anotherString3
+
+        NetworkTool.networkTool.urlRequest(url, function: modifyUserInfo, method: "POST")
+    }
+    
+    func setUserInformation(result : String){
+        let dictionary = NetworkTool.networkTool.convertStringToDictionary(result)
+        
+        self.name.text = (dictionary!["name"] as! String)
+        self.gender.text = (dictionary!["sex"] as! String)
+        self.age.text = (dictionary!["age"] as! String)
+        if((dictionary!["img"] as! String) != ""){
+            let base64String = dictionary!["img"] as! String
+            //self.userImage.image = self.convertBase64ToImage(base64String)
+        }
     }
     
     func getUserInfoFromServer(){
-        
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/viewUserByAccount.action?userAccount=\(ApplicationSession.loginedUserId)"
+        NetworkTool.networkTool.urlRequest(url, function : setUserInformation)
     }
     
     func modifyUserInfo(result : String){
         
         switch result {
         case "INVALID_JSON_STR":
-            AlertMessage.alertFunction("Unknown error", uiViewController: self)
+            AlertMessage.alertFunction("INVALID_JSON_STR error", uiViewController: self)
             break
         case "ACCOUNT_ALREADY_EXISTED":
             AlertMessage.alertFunction("The account already exists, please try another", uiViewController: self)
@@ -65,7 +110,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
             AlertMessage.alertFunction("Unknown error", uiViewController: self)
             break
         case "SUCCESS":
-            self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("LoginViewController"))!, animated: true, completion: nil)
+            AlertMessage.alertFunction("Change Success!", uiViewController: self)
             break
         default:
             break
@@ -100,12 +145,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        self.getUserInfoFromServer()
-    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
