@@ -12,7 +12,9 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     
     @IBOutlet weak var table: UITableView!
     var refreshControl: UIRefreshControl!
-    var arrayStep:[String] = []
+    var displayArray:[String] = []
+    var timeArray:[String] = []
+    
    // var tableViewController = UITableViewController()
     
 
@@ -61,9 +63,9 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func updateArray(array : [String]){
-        self.arrayStep.removeAll()
+        self.displayArray.removeAll()
         for item in array{
-            self.arrayStep.append(item)
+            self.displayArray.append(item)
         }
         //table.reloadData()
     }
@@ -90,13 +92,13 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int{
-        return self.arrayStep.count
+        return self.displayArray.count
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!{
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath: indexPath)
         let row = indexPath.row as Int
-        cell.textLabel!.text = arrayStep[row]
+        cell.textLabel!.text = displayArray[row]
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
