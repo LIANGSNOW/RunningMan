@@ -16,8 +16,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     
     @IBOutlet weak var mapTrack: MKMapView!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var aLabel: UILabel!
-   
+  //  @IBOutlet weak var aLabel: UILabel!
+    @IBOutlet weak var setButton : UIBarButtonItem!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     
@@ -166,7 +166,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         
         
         stepOfString = String(format:"%.1f", healthStep)
-        aLabel.text = "\(stepOfString)"
+        //aLabel.text = "\(stepOfString)"
         
         
 //        var mileOfString:String = "";
@@ -198,9 +198,9 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func setting(sender : AnyObject){
-        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("UserInfoViewController"))!, animated: true, completion: nil)
-    }
+//    @IBAction func setting(sender : AnyObject){
+//        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("UserInfoViewController"))!, animated: true, completion: nil)
+//    }
     
     
     /*
