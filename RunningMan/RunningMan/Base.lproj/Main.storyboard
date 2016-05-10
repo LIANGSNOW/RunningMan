@@ -626,34 +626,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KbL-ns-BJF">
                                 <rect key="frame" x="131" y="28" width="112" height="110"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHv-7e-FDv">
-                                <rect key="frame" x="47" y="482" width="280" height="30"/>
-                                <state key="normal" title="Confirm Change"/>
-                                <connections>
-                                    <action selector="confirm:" destination="453-VB-sFa" eventType="touchUpInside" id="2MA-Bn-hA3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-ka-w0f">
-                                <rect key="frame" x="48" y="161" width="280" height="30"/>
-                                <state key="normal" title="Select a title image"/>
-                                <connections>
-                                    <action selector="selectTitleImage:" destination="453-VB-sFa" eventType="touchUpInside" id="EhK-07-iBf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-CS-yNK">
-                                <rect key="frame" x="49" y="530" width="278" height="30"/>
-                                <state key="normal" title="Change Password"/>
-                                <connections>
-                                    <action selector="changePassword:" destination="453-VB-sFa" eventType="touchUpInside" id="W0x-zr-Dir"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkw-61-Bx5">
-                                <rect key="frame" x="49" y="578" width="278" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancel:" destination="453-VB-sFa" eventType="touchUpInside" id="UUs-E3-f3c"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cY-UQ-Haw">
                                 <rect key="frame" x="42" y="247" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -673,7 +645,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsX-3t-ncz">
-                                <rect key="frame" x="76" y="398" width="30" height="21"/>
+                                <rect key="frame" x="76" y="393" width="30" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -694,10 +666,38 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDC-Pe-pec">
-                                <rect key="frame" x="146" y="394" width="187" height="30"/>
+                                <rect key="frame" x="146" y="389" width="187" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-ka-w0f">
+                                <rect key="frame" x="48" y="161" width="280" height="30"/>
+                                <state key="normal" title="Select a title image"/>
+                                <connections>
+                                    <action selector="selectTitleImage:" destination="453-VB-sFa" eventType="touchUpInside" id="EhK-07-iBf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHv-7e-FDv">
+                                <rect key="frame" x="47" y="456" width="280" height="30"/>
+                                <state key="normal" title="Confirm Change"/>
+                                <connections>
+                                    <action selector="confirm:" destination="453-VB-sFa" eventType="touchUpInside" id="2MA-Bn-hA3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-CS-yNK">
+                                <rect key="frame" x="49" y="504" width="278" height="30"/>
+                                <state key="normal" title="Change Password"/>
+                                <connections>
+                                    <action selector="changePassword:" destination="453-VB-sFa" eventType="touchUpInside" id="W0x-zr-Dir"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkw-61-Bx5">
+                                <rect key="frame" x="49" y="552" width="278" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="453-VB-sFa" eventType="touchUpInside" id="UUs-E3-f3c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
