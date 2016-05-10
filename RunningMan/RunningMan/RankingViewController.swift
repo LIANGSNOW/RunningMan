@@ -15,6 +15,10 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
     var displayArray : NSMutableArray = NSMutableArray()
     @IBOutlet weak var table: UITableView!
     
+    var refreshControl: UIRefreshControl!
+
+    var  sign:Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +31,42 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         self.table.delegate = self
         self.table.dataSource = self
         
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.backgroundColor = UIColor.grayColor()
+        refreshControl.tintColor = UIColor.blackColor()
+        table.addSubview(refreshControl) // not required when using UITableViewController
+    
+    }
+    
+    
+    func refresh(sender:AnyObject) {
+        if sign{
+            let url1 = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/getStepsSortedListByThisWeek.action"
+            NetworkTool.networkTool.urlRequest(url1, function: getRankByWeek)
+            displayArray.removeAllObjects();
+            var i:Int = 0;
+            for item in rankWeekArray {
+                displayArray[i] = item
+                i += 1;
+            }
+            
+        }
+        else{
+            let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/getStepsSortedListByDay.action"
+            NetworkTool.networkTool.urlRequest(url, function: getRankInfoFromServer)
+            displayArray.removeAllObjects();
+            var i : Int = 0;
+            for item in rankDayArray {
+                displayArray[i] = item
+                i += 1;
+            }
+        }
+        
+        self.table.reloadData()
+        self.refreshControl?.endRefreshing()
+
     }
     
      func getRankByWeek(result:String){
@@ -58,6 +98,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
             i += 1;
         }
         self.table.reloadData()
+        sign = true
     }
     
     @IBAction func showRankByDay(){
@@ -68,6 +109,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
             i += 1;
         }
         self.table.reloadData()
+        sign = false
         //refresh the table view in the controller
     }
     

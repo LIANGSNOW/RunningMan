@@ -113,6 +113,15 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         }
     }
     
+    func deleteUserLocation(){
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/deletePosition.action?userAccount=\(ApplicationSession.loginedUserId)"
+        NetworkTool.networkTool.urlRequest(url, function: deleteUserLocationCallbcak)
+    }
+    
+    func deleteUserLocationCallbcak(result:String){
+        
+    }
+    
     func annotateMap(newCoordinate: CLLocationCoordinate2D){
         let latDelta:CLLocationDegrees = 0.01
         let longDelta: CLLocationDegrees = 0.01
@@ -190,7 +199,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         startTime = NSDate.timeIntervalSinceReferenceDate()
         startButton.hidden = true
         stopButton.hidden = false
-        timer = NSTimer()
+        currentTime = NSDate()
         // t = NSDate()
     }
 
@@ -209,7 +218,7 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
                 self.healthStep = steps
             }
         }
-        
+        //print(currentTime)
         
         stepOfString = String(format:"%.1f", healthStep)
         //aLabel.text = "\(stepOfString)"
@@ -222,9 +231,10 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
 //        mileOfString = String(format: "%.1f",healthMile)
 //        bLabel.text = mileOfString
 //        //timer = nil
-        
-        
-        SqlConnection().createSteps(ApplicationSession.loginedUserId,date: "123",step: stepOfString,timeperiod: tiemPeriod)
+        var dateFormatter = NSDateFormatter()
+        let currentimeStr = dateFormatter.stringFromDate(currentTime)
+                deleteUserLocation()
+        SqlConnection().createSteps(ApplicationSession.loginedUserId,date: currentimeStr,step: stepOfString,timeperiod: tiemPeriod)
     }
     
     func testFunction(currentTime : NSDate, function : (Double) -> ()){
