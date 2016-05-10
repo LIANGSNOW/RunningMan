@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate , UITextFieldDelegate{
     
     @IBOutlet weak var account : UITextField!
     @IBOutlet weak var name : UITextField!
@@ -17,15 +17,25 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var weight : UITextField!
     @IBOutlet weak var height : UITextField!
     
+    var genderArray:Array<String>?
+    
     @IBOutlet weak var userImage : UIImageView!
     var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        genderArray = ["Male","Female"]
         
+        let pickerView:UIPickerView=UIPickerView()
+        pickerView.delegate=self
+        pickerView.dataSource=self
+        gender.inputView=pickerView
         // Do any additional setup after loading the view.
         self.getUserInfoFromServer()
         self.account.text! = ApplicationSession.loginedUserId
+        self.account.delegate = self
+        self.name.delegate = self
+        self.age.delegate = self
     }
     
     @IBAction func confirm(sender : AnyObject){
@@ -129,12 +139,38 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("TabBarController"))!, animated: true, completion: nil)
     }
     
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1;
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component:Int) -> Int {
+        return genderArray!.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return genderArray![row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        gender.text=genderArray![row]
+    }
+
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func textFieldShouldReturn(account: UITextField!) -> Bool {
+        account.resignFirstResponder()
+        return true;
+    }
+    
+//    func nameShouldReturn(name:UITextField!) -> Bool{
+//        name.resignFirstResponder()
+//        return true;
+//    }
     
     
     /*
