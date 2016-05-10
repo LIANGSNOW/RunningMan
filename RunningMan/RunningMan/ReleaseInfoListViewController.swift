@@ -17,7 +17,7 @@ class ReleaseInfoListViewController: UIViewController {
             AlertMessage.alertFunction("The content couldn't be null", uiViewController: self)
         }
         
-        let url = "http://192.168.0.16:8080/IOSApp/mobile/postMessage.action?userAccount=\(ApplicationSession.loginedUserId)&content=\(content.text!)"
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/postMessage.action?userAccount=\(ApplicationSession.loginedUserId)&content=\(content.text!)"
         NetworkTool.networkTool.urlRequest(url, function: releaseInfoList)
     }
     

@@ -20,7 +20,7 @@ class ChangePasswordViewController: UIViewController {
             AlertMessage.alertFunction("The re-new password should be the same as new password", uiViewController: self)
         }
         
-        let url = "http://192.168.0.16:8080/IOSApp/mobile/modifyPwd.action?userAccount=\(ApplicationSession.loginedUserId)&originalPwd=\(oldPassword.text!)&newPwd=\(newPassword.text!)"
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/modifyPwd.action?userAccount=\(ApplicationSession.loginedUserId)&originalPwd=\(oldPassword.text!)&newPwd=\(newPassword.text!)"
         NetworkTool.networkTool.urlRequest(url, function: changePassword)
         
     }

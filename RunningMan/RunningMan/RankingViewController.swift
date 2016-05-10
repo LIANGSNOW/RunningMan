@@ -20,9 +20,9 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Do any additional setup after loading the view.
         
-        let url = "http://192.168.0.16:8080/IOSApp/mobile/getStepsSortedListByDay.action"
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/getStepsSortedListByDay.action"
         NetworkTool.networkTool.urlRequest(url, function: getRankInfoFromServer)
-        let url1 = "http://192.168.0.16:8080/IOSApp/mobile/getStepsSortedListByThisWeek.action"
+        let url1 = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/getStepsSortedListByThisWeek.action"
         NetworkTool.networkTool.urlRequest(url1, function: getRankByWeek)
         self.table.delegate = self
         self.table.dataSource = self
