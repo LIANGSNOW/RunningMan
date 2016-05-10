@@ -28,24 +28,6 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.account.text! = ApplicationSession.loginedUserId
     }
     
-    func convertImageToBase64(image: UIImage) -> String {
-        
-        var imageData = UIImagePNGRepresentation(image)
-        let base64String = imageData!.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
-        return base64String
-        
-    }
-
-    func convertBase64ToImage(base64String: String) -> UIImage {
-        
-        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0) )
-        
-        let decodedimage = UIImage(data: decodedData!)
-        
-        return decodedimage!
-        
-    }
-    
     @IBAction func confirm(sender : AnyObject){
         
         var jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!]
@@ -53,7 +35,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         var dataString : NSString = ""
         
         if(self.userImage.image != nil){
-            jsonData["img"] = convertImageToBase64(self.userImage.image!)
+            jsonData["img"] = ImageBase64Tool.convertImageToBase64(self.userImage.image!)
         } else {
             jsonData["img"] = ""
         }
@@ -86,7 +68,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         if((dictionary!["img"] as! String) != ""){
             let base64String = dictionary!["img"] as! String
             
-            self.userImage.image = self.convertBase64ToImage(base64String)
+            self.userImage.image = ImageBase64Tool.convertBase64ToImage(base64String)
         }
     }
 
