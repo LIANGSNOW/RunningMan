@@ -42,7 +42,6 @@ class InfoListViewController: UITableViewController {
             let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
             
             for item in (jsonData as! NSMutableArray){
-                print(item)
                 let temp = item as! NSDictionary
                 let user : User = User()
                 let infoList : InfoList = InfoList()
@@ -96,7 +95,6 @@ class InfoListViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 
                 let detail = infoListArray.objectAtIndex(indexPath.row) as! InfoList
-                print(detail.content)
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! InfoListDetailController
                 controller.detail = detail
                 
@@ -119,7 +117,6 @@ class InfoListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         cell.textLabel?.text = (self.infoListArray.objectAtIndex(indexPath.row) as! InfoList).content
-        //  print(self.infoListArray.objectAtIndex(indexPath.row) as! String)
         return cell
     }
     

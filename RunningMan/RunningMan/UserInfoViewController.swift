@@ -136,6 +136,11 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func logout(sender : AnyObject){
+        ApplicationSession.loginedUserId = ""
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("LoginViewController"))!, animated: true, completion: nil)
+    }
+    
     
     /*
      // MARK: - Navigation
