@@ -10,7 +10,9 @@ import UIKit
 
 class RankingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var rankArray : NSMutableArray = NSMutableArray()
+    var rankDayArray : NSMutableArray = NSMutableArray()
+    var rankWeekArray : NSMutableArray = NSMutableArray()
+    var displayArray : NSMutableArray = NSMutableArray()
     @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
@@ -20,13 +22,59 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let url = "http://192.168.0.16:8080/IOSApp/mobile/getStepsSortedListByDay.action"
         NetworkTool.networkTool.urlRequest(url, function: getRankInfoFromServer)
+        let url1 = "http://192.168.0.16:8080/IOSApp/mobile/getStepsSortedListByThisWeek.action"
+        NetworkTool.networkTool.urlRequest(url1, function: getRankByWeek)
         self.table.delegate = self
         self.table.dataSource = self
         
     }
     
+     func getRankByWeek(result:String){
+        let data = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        rankWeekArray.removeAllObjects();
+        do{
+            
+            let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
+            
+            for item in (jsonData as! NSMutableArray){
+                let name : String = (item as! NSDictionary).valueForKey("userAccount") as! String
+                let steps : String = (item as! NSDictionary).valueForKey("steps") as! String
+                let content = "name:" + name + "    steps:" + steps
+                self.rankWeekArray.addObject(content)
+            }
+            
+        } catch {
+            print("convert json string to array error")
+        }
+
+    }
+    
+    
+    @IBAction func showRankByWeek(){
+        displayArray.removeAllObjects();
+        var i:Int = 0;
+        for item in rankWeekArray {
+            displayArray[i] = item
+            i += 1;
+        }
+        self.table.reloadData()
+    }
+    
+    @IBAction func showRankByDay(){
+        displayArray.removeAllObjects();
+        var i : Int = 0;
+        for item in rankDayArray {
+            displayArray[i] = item
+            i += 1;
+        }
+        self.table.reloadData()
+        //refresh the table view in the controller
+    }
+    
+    
     func getRankInfoFromServer(result : String){
         let data = result.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        rankDayArray.removeAllObjects();
         do{
             let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
             
@@ -34,12 +82,9 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
                 let name : String = (item as! NSDictionary).valueForKey("userAccount") as! String
                 let steps : String = (item as! NSDictionary).valueForKey("steps") as! String
                 let content = "name:" + name + "    steps:" + steps
-                self.rankArray.addObject(content)
-            }
-            self.table.reloadData()
-            //refresh the table view in the controller
-            
-        } catch {
+                self.rankDayArray.addObject(content)
+                }
+            } catch {
             print("convert json string to array error")
         }
         
@@ -69,13 +114,13 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankArray.count
+        return self.displayArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = self.rankArray.objectAtIndex(indexPath.row) as! String
+        cell.textLabel?.text = self.displayArray.objectAtIndex(indexPath.row) as! String
         //  print(self.infoListArray.objectAtIndex(indexPath.row) as! String)
         return cell
     }

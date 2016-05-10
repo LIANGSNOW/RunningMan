@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="661.5" y="313.5"/>
+            <point key="canvasLocation" x="735.5" y="382.5"/>
         </scene>
         <!--InfoList-->
         <scene sceneID="FTz-Ca-esh">
@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P4U-px-IqF">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4U-px-IqF" id="8Ev-6y-5U9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -152,25 +152,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdv-I1-u3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1480" y="3476"/>
-        </scene>
-        <!--Info List Detail Controller-->
-        <scene sceneID="FeQ-GH-9je">
-            <objects>
-                <viewController storyboardIdentifier="InfoListDetail" id="1Tl-FT-sUG" customClass="InfoListDetailController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ROy-10-iMF"/>
-                        <viewControllerLayoutGuide type="bottom" id="hO3-Ek-MKR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FtM-8U-OPB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lTh-bx-1Cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1747.5" y="3384.5"/>
         </scene>
         <!--Master-->
         <scene sceneID="YKB-VC-sHM">
@@ -503,12 +484,18 @@
                                     <color key="titleColor" red="0.96231759549171725" green="0.97809589901894012" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="0.98709625187913475" blue="0.95326384083570159" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="showRankByWeek" destination="h9E-sj-e9d" eventType="touchUpInside" id="TIY-LA-PzB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7b-zj-FkM">
                                 <rect key="frame" x="99" y="28" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="showRankByDay" destination="h9E-sj-e9d" eventType="touchUpInside" id="eOK-NR-bLz"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oje-73-cff">
                                 <rect key="frame" x="0.0" y="69" width="375" height="598"/>
