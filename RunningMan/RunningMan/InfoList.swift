@@ -13,10 +13,14 @@ class InfoList {
 
     var user : User?
     var content : String = ""
-    var date : NSDate?
+    var date : String = ""
     var pic : UIImage?
     
-    init(user : User, content : String, date : NSDate, pic : UIImage){
+    init(){
+        
+    }
+    
+    init(user : User, content : String, date : String, pic : UIImage){
         self.user = user
         self.date = date
         self.content = content

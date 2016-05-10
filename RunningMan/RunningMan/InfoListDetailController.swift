@@ -10,10 +10,16 @@ import UIKit
 
 class InfoListDetailController: UIViewController{
     
+    @IBOutlet weak var userImage : UIImageView!
+    @IBOutlet weak var userName : UILabel!
+    @IBOutlet weak var infoListContent : UILabel!
+    
+    var detail : InfoList!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-              // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +37,15 @@ class InfoListDetailController: UIViewController{
         // Pass the selected object to the new view controller.
     }
     */
-
- 
+    
+    override func viewWillAppear(animated: Bool){
+        super.viewWillAppear(animated)
+        userName.text = self.detail.user?.account
+        print(self.detail.user?.account)
+        infoListContent.text = self.detail.content
+        if(self.detail.user?.photo != nil){
+            userImage.image = self.detail.user?.photo
+        }
+    }
+    
 }

@@ -19,6 +19,10 @@ class User{
     var desc : String = ""
     var photo : UIImage?
     
+    init(){
+        
+    }
+    
     init(account : String, password : String, name : String, sex : String, age : String, desc : String, photo : UIImage){
         self.account = account
         self.password = password

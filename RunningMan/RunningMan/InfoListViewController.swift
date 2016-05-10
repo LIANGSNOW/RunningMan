@@ -13,16 +13,12 @@ class InfoListViewController: UITableViewController {
     @IBOutlet weak var newButton:UIBarButtonItem!
     
     var infoListArray : NSMutableArray = NSMutableArray()
-    var infoList : [String : AnyObject] = [:]
     var detailViewController: InfoListDetailController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       // let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(InfoListViewController.insertNewObject))
-       // self.navigationItem.rightBarButtonItem = addButton
-        
-        
+
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? InfoListDetailController
@@ -46,8 +42,19 @@ class InfoListViewController: UITableViewController {
             let jsonData = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)
             
             for item in (jsonData as! NSMutableArray){
-                let content : String = (item as! NSDictionary).valueForKey("content") as! String
-                self.infoListArray.addObject(content)
+                print(item)
+                let temp = item as! NSDictionary
+                let user : User = User()
+                let infoList : InfoList = InfoList()
+                infoList.content = temp["content"] as! String
+                infoList.date = temp["date"] as! String
+                user.account = temp["userAccount"] as! String
+                let img : String = temp["img"] as! String
+                if(img != ""){
+                    user.photo = ImageBase64Tool.convertBase64ToImage(img)
+                }
+                infoList.user = user
+                self.infoListArray.addObject(infoList)
             }
             
             //refresh the table view in the controller
@@ -56,7 +63,7 @@ class InfoListViewController: UITableViewController {
             print("convert json string to array error")
         }
     }
-    
+   
     override func viewWillAppear(animated: Bool) {
         
     }
@@ -84,13 +91,17 @@ class InfoListViewController: UITableViewController {
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 
+                let detail = infoListArray.objectAtIndex(indexPath.row) as! InfoList
+                print(detail.content)
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! InfoListDetailController
+                controller.detail = detail
+                
             }
-            
         }
-        
     }
     
     
@@ -107,7 +118,7 @@ class InfoListViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = self.infoListArray.objectAtIndex(indexPath.row) as! String
+        cell.textLabel?.text = (self.infoListArray.objectAtIndex(indexPath.row) as! InfoList).content
         //  print(self.infoListArray.objectAtIndex(indexPath.row) as! String)
         return cell
     }
