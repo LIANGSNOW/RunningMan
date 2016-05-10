@@ -78,15 +78,16 @@ class SqlConnection{
 
     }
     
-    func displayAll(function : ([String]) -> ()) {
+    func displayAll(function : ([String],[String]) -> ()) {
+        var arrayTime : [String] = []
         var arrayStep : [String] = []
         while(sqlite3_step(displaySteps)  == SQLITE_ROW){
            
             let step_buf = sqlite3_column_text(displaySteps, 0)
             let period_buf = sqlite3_column_text(displaySteps, 1)
-            arrayStep.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
+            arrayTime.append(String.fromCString(UnsafePointer<CChar>(step_buf))!)
             arrayStep.append(String.fromCString(UnsafePointer<CChar>(period_buf))!)
-            function(arrayStep)
+            function(arrayStep,arrayTime)
         }
     
         sqlite3_reset(displaySteps)

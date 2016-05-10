@@ -14,7 +14,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     var refreshControl: UIRefreshControl!
     var displayArray:[String] = []
     var timeArray:[String] = []
-    
+    var stepArray:[String] = []
    // var tableViewController = UITableViewController()
     
 
@@ -27,6 +27,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
         self.table.delegate = self
         self.table.dataSource = self
         SqlConnection().displayAll(updateArray)
+        addDisplayArray()
         table.reloadData()
         //table = tableViewController.tableView
         //tableViewController.refreshControl = self.refreshControl
@@ -45,9 +46,10 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     
    
     func refresh(sender:AnyObject) {
-       self.table.delegate = self
+        self.table.delegate = self
         self.table.dataSource = self
         SqlConnection().displayAll(updateArray)
+        addDisplayArray()
         table.reloadData()
         self.refreshControl.endRefreshing()
     }
@@ -62,12 +64,25 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
 //        refreshControl.addSubview(customView)
     }
     
-    func updateArray(array : [String]){
-        self.displayArray.removeAll()
-        for item in array{
-            self.displayArray.append(item)
+    func updateArray(arraytime : [String],arraystep:[String]){
+        self.timeArray.removeAll()
+        self.stepArray.removeAll()
+        for item in arraytime{
+            self.timeArray.append(item)
+        }
+        for item in arraystep{
+            self.stepArray.append(item)
         }
         //table.reloadData()
+    }
+    
+    func  addDisplayArray() {
+        self.displayArray.removeAll()
+        var i:Int = 0
+        for item in timeArray{
+            displayArray.append("Time:"+item+"Steps: "+stepArray[i])
+            i += 1
+        }
     }
     
 
