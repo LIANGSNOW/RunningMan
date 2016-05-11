@@ -63,7 +63,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
-        backgroundImage.image = UIImage(named: "login")
+        backgroundImage.image = UIImage(named: "loginfuck")
         self.view.insertSubview(backgroundImage, atIndex: 0)
       
 
@@ -87,6 +87,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
 //        self.account.text = "GuoQi"
 //        self.password.text = "12345"
+        self.account.placeholder     = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.account.selectedTitle   = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.account.title           = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+
         
         self.password.placeholder     = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
         self.password.selectedTitle   = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
@@ -115,6 +119,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         textField.placeholderFont = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
         textField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
     }
+  
 
     
     override func didReceiveMemoryWarning() {

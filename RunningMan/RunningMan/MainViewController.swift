@@ -37,9 +37,18 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     let lightGreyColor = UIColor(red: 197/255, green: 205/255, blue: 205/255, alpha: 1.0)
     let darkGreyColor = UIColor(red: 52/255, green: 42/255, blue: 61/255, alpha: 1.0)
     let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-
+    let lightGreenColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1.0)
+    let lightRedColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0)
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.startButton.layer.borderColor = lightGreenColor.CGColor
+        self.startButton.layer.borderWidth = 1
+        self.startButton.layer.cornerRadius = 5
+        self.startButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
+        self.stopButton.layer.borderColor = lightRedColor.CGColor
+        self.stopButton.layer.borderWidth = 1
+        self.stopButton.layer.cornerRadius = 5
+        self.stopButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
         
         locationManager = CLLocationManager()
         locationManager.delegate = self

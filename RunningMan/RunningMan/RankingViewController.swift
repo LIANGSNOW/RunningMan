@@ -37,7 +37,8 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         refreshControl.backgroundColor = UIColor.grayColor()
         refreshControl.tintColor = UIColor.blackColor()
         table.addSubview(refreshControl) // not required when using UITableViewController
-    
+        
+
     }
     
     
