@@ -85,9 +85,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         self.regesterButton.layer.cornerRadius = 5
         self.regesterButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
         
-        self.account.placeholder     = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
-        self.account.selectedTitle   = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
-        self.account.title           = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+//        self.account.text = "GuoQi"
+//        self.password.text = "12345"
         
         self.password.placeholder     = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
         self.password.selectedTitle   = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
