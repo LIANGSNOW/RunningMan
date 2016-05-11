@@ -96,4 +96,5 @@ class SqlConnection{
         sqlite3_clear_bindings(displaySteps)
    
     }
+ 
 }

@@ -41,9 +41,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         // Do any additional setup after loading the view.
         self.getUserInfoFromServer()
         self.account.text! = ApplicationSession.loginedUserId
-        self.account.delegate = self
-        self.name.delegate = self
-        self.age.delegate = self
+     
         let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
         backgroundImage.image = UIImage(named: "backgroud")
         self.view.insertSubview(backgroundImage, atIndex: 0)
@@ -87,7 +85,10 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.applySkyscannerTheme(self.gender)
         self.applySkyscannerTheme(self.age)
 
-       
+        self.account.delegate = self
+        self.name.delegate = self
+        self.gender.delegate = self
+        self.age.delegate = self
        
     }
     
@@ -108,12 +109,12 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func confirm(sender : AnyObject){
-        
+
         var jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!]
-        
         var dataString : NSString = ""
         
-        if(self.userImage.image != nil){
+        if(self.userImage.image != nil ){
+         
             jsonData["img"] = ImageBase64Tool.convertImageToBase64(self.userImage.image!)
         } else {
             jsonData["img"] = ""
@@ -134,23 +135,25 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         let anotherString3 : String = "\"img\":\"" + jsonData["img"]! + "\"}"
         
         let url = start + anotherString + anotherString1 + anotherString2 + anotherString3
+        print(url)
 
         NetworkTool.networkTool.urlRequest(url, function: modifyUserInfo, method: "POST")
     }
 
     func setUserInformation(result : String){
+        print(result)
         let dictionary = NetworkTool.networkTool.convertStringToDictionary(result)
         if(dictionary!["name"] != nil){
             self.name.text = (dictionary!["name"] as! String)
         }
-        if(dictionary!["name"] != nil){
+        if(dictionary!["sex"] != nil){
             self.gender.text = (dictionary!["sex"] as! String)
         }
-        if(dictionary!["name"] != nil){
+        if(dictionary!["age"] != nil){
             self.age.text = (dictionary!["age"] as! String)
         }
         
-        if(dictionary!["img"] != nil){
+        if(dictionary!["img"]as! String! != "" ){
             let base64String = dictionary!["img"] as! String
             
             self.userImage.image = ImageBase64Tool.convertBase64ToImage(base64String)

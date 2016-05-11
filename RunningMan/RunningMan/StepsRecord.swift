@@ -18,5 +18,7 @@ class StepsRecord{
         self.date = date
         self.stepsCount = stepsCount
     }
-    
+    deinit{
+                   
+    }
 }

@@ -28,4 +28,8 @@ class InfoList {
         self.pic = pic
     }
     
+    deinit{
+        
+    }
+    
 }

@@ -32,5 +32,7 @@ class User{
         self.desc = desc
         self.photo = photo
     }
-    
+    deinit{
+        
+    }
 }
