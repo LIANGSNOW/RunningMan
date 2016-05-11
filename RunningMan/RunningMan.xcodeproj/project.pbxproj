@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		040611DF1CDF26DE00F56EC9 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040611DE1CDF26DE00F56EC9 /* HealthKit.framework */; };
 		040611E51CDF272A00F56EC9 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040611E41CDF272A00F56EC9 /* HealthManager.swift */; };
+		043C365D1CE33A8E0036367E /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C365A1CE33A8E0036367E /* SkyFloatingLabelTextField.swift */; };
+		043C365E1CE33A8E0036367E /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C365B1CE33A8E0036367E /* SkyFloatingLabelTextFieldWithIcon.swift */; };
+		043C365F1CE33A8E0036367E /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C365C1CE33A8E0036367E /* UITextField+fixCaretPosition.swift */; };
 		04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD2E811CDB92A700832B81 /* CoreLocation.framework */; };
 		3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */; };
 		3A26AA6E1CDADCA40042D3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A26AA6C1CDADCA40042D3F7 /* Main.storyboard */; };
@@ -68,6 +71,9 @@
 		040611DD1CDF26D400F56EC9 /* RunningMan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningMan.entitlements; sourceTree = "<group>"; };
 		040611DE1CDF26DE00F56EC9 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		040611E41CDF272A00F56EC9 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		043C365A1CE33A8E0036367E /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		043C365B1CE33A8E0036367E /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
+		043C365C1CE33A8E0036367E /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
 		04FD2E811CDB92A700832B81 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A26AA631CDADCA40042D3F7 /* RunningMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,9 +148,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043C36591CE33A630036367E /* SkyFloatingLabelTextField */ = {
+			isa = PBXGroup;
+			children = (
+				043C365A1CE33A8E0036367E /* SkyFloatingLabelTextField.swift */,
+				043C365B1CE33A8E0036367E /* SkyFloatingLabelTextFieldWithIcon.swift */,
+				043C365C1CE33A8E0036367E /* UITextField+fixCaretPosition.swift */,
+			);
+			name = SkyFloatingLabelTextField;
+			sourceTree = "<group>";
+		};
 		3A26AA5A1CDADCA40042D3F7 = {
 			isa = PBXGroup;
 			children = (
+				043C36591CE33A630036367E /* SkyFloatingLabelTextField */,
 				040611DE1CDF26DE00F56EC9 /* HealthKit.framework */,
 				04FD2E811CDB92A700832B81 /* CoreLocation.framework */,
 				3A26AAB81CDB86DD0042D3F7 /* libsqlite3.tbd */,
@@ -394,6 +411,7 @@
 				3A26AAFE1CDE51FE0042D3F7 /* AlertMessage.swift in Sources */,
 				3A26AAAE1CDAF4AE0042D3F7 /* RegisterViewController.swift in Sources */,
 				3A26AA971CDAEA1F0042D3F7 /* LoginViewController.swift in Sources */,
+				043C365E1CE33A8E0036367E /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				3A26AAC01CDB9D280042D3F7 /* NetworkTool.swift in Sources */,
 				3A26AAA81CDAEEF50042D3F7 /* StepsRecordViewController.swift in Sources */,
 				3A26AAA21CDAEE800042D3F7 /* InfoListViewController.swift in Sources */,
@@ -403,6 +421,7 @@
 				3AB029511CDF1E7000479AE0 /* InfoListDetailController.swift in Sources */,
 				3A26AAA41CDAEEBD0042D3F7 /* RankingViewController.swift in Sources */,
 				3AB0294D1CDEF16F00479AE0 /* ApplicationSession.swift in Sources */,
+				043C365F1CE33A8E0036367E /* UITextField+fixCaretPosition.swift in Sources */,
 				3A26AABC1CDB87530042D3F7 /* Bridging-Header.m in Sources */,
 				3A26AAAA1CDAEFEE0042D3F7 /* MainViewController.swift in Sources */,
 				3A26AAB21CDB83A40042D3F7 /* User.swift in Sources */,
@@ -560,6 +579,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RunningMan/RunningMan.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunningMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.RunningMan;
@@ -576,6 +599,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RunningMan/RunningMan.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RunningMan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.RunningMan;
