@@ -162,15 +162,10 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(account: UITextField!) -> Bool {
-        account.resignFirstResponder()
-        return true;
+    @IBAction func logout(sender : AnyObject){
+        ApplicationSession.loginedUserId = ""
+        self.presentViewController((storyboard?.instantiateViewControllerWithIdentifier("LoginViewController"))!, animated: true, completion: nil)
     }
-    
-//    func nameShouldReturn(name:UITextField!) -> Bool{
-//        name.resignFirstResponder()
-//        return true;
-//    }
     
     
     /*

@@ -41,7 +41,6 @@ class InfoListDetailController: UIViewController{
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
         userName.text = self.detail.user?.account
-        print(self.detail.user?.account)
         infoListContent.text = self.detail.content
         if(self.detail.user?.photo != nil){
             userImage.image = self.detail.user?.photo

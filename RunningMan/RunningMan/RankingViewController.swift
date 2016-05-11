@@ -163,7 +163,6 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         cell.textLabel?.text = self.displayArray.objectAtIndex(indexPath.row) as! String
-        //  print(self.infoListArray.objectAtIndex(indexPath.row) as! String)
         return cell
     }
     
