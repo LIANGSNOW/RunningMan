@@ -278,9 +278,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHQ-Ey-I8Q">
-                                <rect key="frame" x="219" y="453" width="36" height="30"/>
-                                <state key="normal" title="good"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHQ-Ey-I8Q">
+                                <rect key="frame" x="214" y="442" width="55" height="51"/>
+                                <state key="normal" title="good" image="iconLike"/>
                                 <connections>
                                     <action selector="good:" destination="TZY-ve-Pfc" eventType="touchUpInside" id="eXb-RM-IgJ"/>
                                 </connections>
@@ -746,6 +746,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="iconLike" width="40" height="20"/>
         <image name="post30" width="30" height="30"/>
         <image name="ranking30" width="30" height="30"/>
         <image name="running30" width="30" height="30"/>
