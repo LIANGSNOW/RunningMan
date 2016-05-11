@@ -88,9 +88,18 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         }
 
     }
+    @IBAction func selectedTitleChanged(segmentedControl:UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+             showRankByDay()
+        case 1:
+            showRankByWeek()
+        default:
+            showRankByDay()
+        }
+    }
     
-    
-    @IBAction func showRankByWeek(){
+     func showRankByWeek(){
         displayArray.removeAllObjects();
         var i:Int = 0;
         for item in rankWeekArray {
@@ -101,7 +110,7 @@ class RankingViewController: UIViewController, UITableViewDataSource, UITableVie
         sign = true
     }
     
-    @IBAction func showRankByDay(){
+     func showRankByDay(){
         displayArray.removeAllObjects();
         var i : Int = 0;
         for item in rankDayArray {

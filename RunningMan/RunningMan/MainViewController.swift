@@ -20,7 +20,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     @IBOutlet weak var setButton : UIBarButtonItem!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    
+    @IBOutlet weak var showButton: UIButton!
+
     
     
     var startTime = NSTimeInterval()
@@ -33,7 +34,10 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     var healthMile:Double = 0
     var userLatitude:Double = 0
     var userLongtitude:Double = 0
-    
+    let lightGreyColor = UIColor(red: 197/255, green: 205/255, blue: 205/255, alpha: 1.0)
+    let darkGreyColor = UIColor(red: 52/255, green: 42/255, blue: 61/255, alpha: 1.0)
+    let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +55,10 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         stopButton.hidden = true
         
         
+        self.showButton.layer.borderColor = darkGreyColor.CGColor
+        self.showButton.layer.borderWidth = 1
+        self.showButton.layer.cornerRadius = 5
+        self.showButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
         
         
        

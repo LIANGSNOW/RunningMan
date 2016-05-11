@@ -80,7 +80,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
         self.displayArray.removeAll()
         var i:Int = 0
         for item in timeArray{
-            displayArray.append("Time:"+item+"Steps: "+stepArray[i])
+            displayArray.append("Period:  "+item+"    Steps:  "+stepArray[i])
             i += 1
         }
     }

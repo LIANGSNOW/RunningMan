@@ -10,17 +10,25 @@ import UIKit
 
 class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate , UITextFieldDelegate{
     
-    @IBOutlet weak var account : UITextField!
-    @IBOutlet weak var name : UITextField!
-    @IBOutlet weak var gender : UITextField!
-    @IBOutlet weak var age : UITextField!
+    @IBOutlet weak var account : SkyFloatingLabelTextField!
+    @IBOutlet weak var name : SkyFloatingLabelTextField!
+    @IBOutlet weak var gender : SkyFloatingLabelTextField!
+    @IBOutlet weak var age : SkyFloatingLabelTextField!
     @IBOutlet weak var weight : UITextField!
     @IBOutlet weak var height : UITextField!
+    @IBOutlet weak var confirmButton :UIButton!
+    @IBOutlet weak var changeButton :UIButton!
+    @IBOutlet weak var logOutButton :UIButton!
     
     var genderArray:Array<String>?
     
     @IBOutlet weak var userImage : UIImageView!
     var imagePicker = UIImagePickerController()
+    
+    let lightGreyColor = UIColor(red: 197/255, green: 205/255, blue: 205/255, alpha: 1.0)
+    let darkGreyColor = UIColor(red: 52/255, green: 42/255, blue: 61/255, alpha: 1.0)
+    let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +44,69 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.account.delegate = self
         self.name.delegate = self
         self.age.delegate = self
+        let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+        backgroundImage.image = UIImage(named: "backgroud")
+        self.view.insertSubview(backgroundImage, atIndex: 0)
+        setupThemeColors()
+    }
+    func setupThemeColors() {
+        
+        self.confirmButton.layer.borderColor = darkGreyColor.CGColor
+        self.confirmButton.layer.borderWidth = 1
+        self.confirmButton.layer.cornerRadius = 5
+        self.confirmButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
+        self.changeButton.layer.borderColor = darkGreyColor.CGColor
+        self.changeButton.layer.borderWidth = 1
+        self.changeButton.layer.cornerRadius = 5
+        self.changeButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
+        self.logOutButton.layer.borderColor = darkGreyColor.CGColor
+        self.logOutButton.layer.borderWidth = 1
+        self.logOutButton.layer.cornerRadius = 5
+        self.logOutButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
+        
+        self.account.placeholder     = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.account.selectedTitle   = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.account.title           = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        
+        self.name.placeholder     = NSLocalizedString("Name", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.name.selectedTitle   = NSLocalizedString("Name", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.name.title           = NSLocalizedString("Name", tableName: "SkyFloatingLabelTextField", comment: "")
+        
+        self.age.placeholder     = NSLocalizedString("Age", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.age.selectedTitle   = NSLocalizedString("Age", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.age.title           = NSLocalizedString("Age", tableName: "SkyFloatingLabelTextField", comment: "")
+
+        
+        self.gender.placeholder     = NSLocalizedString("Gender", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.gender.selectedTitle   = NSLocalizedString("Gender", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.gender.title           = NSLocalizedString("Gender", tableName: "SkyFloatingLabelTextField", comment: "")
+        
+        
+        self.applySkyscannerTheme(self.account)
+        self.applySkyscannerTheme(self.name)
+        self.applySkyscannerTheme(self.gender)
+        self.applySkyscannerTheme(self.age)
+
+       
+       
     }
     
+    func applySkyscannerTheme(textField: SkyFloatingLabelTextField) {
+        
+        textField.tintColor = overcastBlueColor
+        
+        textField.textColor = darkGreyColor
+        textField.lineColor = lightGreyColor
+        
+        textField.selectedTitleColor = overcastBlueColor
+        textField.selectedLineColor = overcastBlueColor
+        
+        // Set custom fonts for the title, placeholder and textfield labels
+        textField.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
+        textField.placeholderFont = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
+        textField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+    }
+
     @IBAction func confirm(sender : AnyObject){
         
         var jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!]
@@ -71,11 +140,17 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
 
     func setUserInformation(result : String){
         let dictionary = NetworkTool.networkTool.convertStringToDictionary(result)
+        if(dictionary!["name"] != nil){
+            self.name.text = (dictionary!["name"] as! String)
+        }
+        if(dictionary!["name"] != nil){
+            self.gender.text = (dictionary!["sex"] as! String)
+        }
+        if(dictionary!["name"] != nil){
+            self.age.text = (dictionary!["age"] as! String)
+        }
         
-        self.name.text = (dictionary!["name"] as! String)
-        self.gender.text = (dictionary!["sex"] as! String)
-        self.age.text = (dictionary!["age"] as! String)
-        if((dictionary!["img"] as! String) != ""){
+        if(dictionary!["img"] != nil){
             let base64String = dictionary!["img"] as! String
             
             self.userImage.image = ImageBase64Tool.convertBase64ToImage(base64String)

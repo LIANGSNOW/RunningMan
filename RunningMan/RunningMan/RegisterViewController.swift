@@ -8,11 +8,18 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController ,UITextFieldDelegate{
     
-    @IBOutlet weak var account : UITextField!
-    @IBOutlet weak var password : UITextField!
-    @IBOutlet weak var rePassword : UITextField!
+    @IBOutlet weak var account : SkyFloatingLabelTextField!
+    @IBOutlet weak var password : SkyFloatingLabelTextField!
+    @IBOutlet weak var rePassword : SkyFloatingLabelTextField!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+
+    
+    let lightGreyColor = UIColor(red: 197/255, green: 205/255, blue: 205/255, alpha: 1.0)
+    let darkGreyColor = UIColor(red: 52/255, green: 42/255, blue: 61/255, alpha: 1.0)
+    let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
     
     @IBAction func register(sender : AnyObject){
         
@@ -63,9 +70,65 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+        backgroundImage.image = UIImage(named: "backgroud")
+        self.view.insertSubview(backgroundImage, atIndex: 0)
+        setupThemeColors() 
+          }
+    
+    func setupThemeColors() {
+        
+        self.confirmButton.layer.borderColor = darkGreyColor.CGColor
+        self.confirmButton.layer.borderWidth = 1
+        self.confirmButton.layer.cornerRadius = 5
+        self.confirmButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
+        self.cancelButton.layer.borderColor = darkGreyColor.CGColor
+        self.cancelButton.layer.borderWidth = 1
+        self.cancelButton.layer.cornerRadius = 5
+        self.cancelButton.setTitleColor(overcastBlueColor, forState: .Highlighted)
+        
+        self.account.placeholder     = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.account.selectedTitle   = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.account.title           = NSLocalizedString("Account", tableName: "SkyFloatingLabelTextField", comment: "")
+        
+        self.password.placeholder     = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.password.selectedTitle   = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.password.title           = NSLocalizedString("Password", tableName: "SkyFloatingLabelTextField", comment: "")
+        
+        self.rePassword.placeholder     = NSLocalizedString("RePassword", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.rePassword.selectedTitle   = NSLocalizedString("RePassword", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.rePassword.title           = NSLocalizedString("RePassword", tableName: "SkyFloatingLabelTextField", comment: "")
 
-        // Do any additional setup after loading the view.
+        
+        self.applySkyscannerTheme(self.account)
+        self.applySkyscannerTheme(self.password)
+        self.applySkyscannerTheme(self.rePassword)
+
+        
+        account.delegate = self
+        password.delegate = self
+        rePassword.delegate = self
+        password.secureTextEntry = true
+        rePassword.secureTextEntry = true
     }
+    
+    func applySkyscannerTheme(textField: SkyFloatingLabelTextField) {
+        
+        textField.tintColor = overcastBlueColor
+        
+        textField.textColor = darkGreyColor
+        textField.lineColor = lightGreyColor
+        
+        textField.selectedTitleColor = overcastBlueColor
+        textField.selectedLineColor = overcastBlueColor
+        
+        // Set custom fonts for the title, placeholder and textfield labels
+        textField.titleLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
+        textField.placeholderFont = UIFont(name: "AppleSDGothicNeo-Light", size: 18)
+        textField.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -12,13 +12,16 @@ class InfoListDetailController: UIViewController{
     
     @IBOutlet weak var userImage : UIImageView!
     @IBOutlet weak var userName : UILabel!
-    @IBOutlet weak var infoListContent : UILabel!
+    @IBOutlet weak var infoListContent : UITextView!
     
     var isTheGoodButtonChecked : Bool = true
     
     var likeList : NSMutableArray = NSMutableArray()
     
     @IBOutlet weak var goodLabel : UILabel!
+    
+    
+   
     
     @IBAction func good(send : AnyObject){
         self.getLikeList()
@@ -74,7 +77,8 @@ class InfoListDetailController: UIViewController{
             self.goodLabel.text = String(self.likeList.count)
         }
     }
-
+    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
