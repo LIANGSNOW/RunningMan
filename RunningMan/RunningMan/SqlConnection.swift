@@ -47,7 +47,7 @@ class SqlConnection{
         var cSql = sqlString.cStringUsingEncoding(NSUTF8StringEncoding)
         sqlite3_prepare_v2(database, cSql!, -1, &insertSteps, nil)
 
-        sqlString = "SELECT steps_count,timeperiod FROM RUNNING_MAN"
+        sqlString = "SELECT steps_count,timeperiod FROM RUNNING_MAN WHERE account=?"
         cSql = sqlString.cStringUsingEncoding(NSUTF8StringEncoding)
         sqlite3_prepare_v2(database, cSql!, -1, &displaySteps, nil)
 
@@ -78,9 +78,11 @@ class SqlConnection{
 
     }
     
-    func displayAll(function : ([String],[String]) -> ()) {
+    func displayAll(acc:String , function : ([String],[String]) -> ()) {
         var arrayTime : [String] = []
         var arrayStep : [String] = []
+        let accStr = acc as NSString?
+        sqlite3_bind_text(displaySteps, 1, accStr!.UTF8String, -1, SQLITE_TRANSIENT)
         while(sqlite3_step(displaySteps)  == SQLITE_ROW){
            
             let step_buf = sqlite3_column_text(displaySteps, 0)
