@@ -54,8 +54,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.account.text = "GuoQi"
-        self.password.text = "123456"
+//        self.account.text = "GuoQi"
+//        self.password.text = "12345"
         
     }
     
