@@ -15,6 +15,7 @@ class InfoList {
     var content : String = ""
     var date : String = ""
     var pic : UIImage?
+    var id : String = ""
     
     init(){
         

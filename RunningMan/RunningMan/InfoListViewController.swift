@@ -53,6 +53,7 @@ class InfoListViewController: UITableViewController {
                 let infoList : InfoList = InfoList()
                 infoList.content = temp["content"] as! String
                 infoList.date = temp["date"] as! String
+                infoList.id = temp["id"] as! String
                 user.account = temp["userAccount"] as! String
                 let img : String = temp["img"] as! String
                 if(img != ""){
