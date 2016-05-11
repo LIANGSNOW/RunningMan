@@ -221,6 +221,8 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         //print(currentTime)
         
         stepOfString = String(format:"%.1f", healthStep)
+        let stepOfInt:Int = Int(healthStep)
+        stepOfString = String(stepOfInt)
         //aLabel.text = "\(stepOfString)"
         
         
@@ -233,8 +235,20 @@ class MainViewController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
 //        //timer = nil
         var dateFormatter = NSDateFormatter()
         let currentimeStr = dateFormatter.stringFromDate(currentTime)
-                deleteUserLocation()
+        deleteUserLocation()
         SqlConnection().createSteps(ApplicationSession.loginedUserId,date: currentimeStr,step: stepOfString,timeperiod: tiemPeriod)
+        uploadStepToServer(stepOfString)
+        
+    }
+    
+    func uploadStepToServer(step:String){
+        let url = "http://" + NetworkTool.serverIP + "/IOSApp/mobile/updateStepsRecord.action?userAccount=\(ApplicationSession.loginedUserId)&stepsCount=\(step)"
+        NetworkTool.networkTool.urlRequest(url, function: uploadStepToServerCallBack)
+       
+
+    }
+    func uploadStepToServerCallBack(result:String){
+        
     }
     
     func testFunction(currentTime : NSDate, function : (Double) -> ()){

@@ -26,7 +26,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         self.table.delegate = self
         self.table.dataSource = self
-        SqlConnection().displayAll(updateArray)
+        SqlConnection().displayAll(ApplicationSession.loginedUserId,function: updateArray)
         addDisplayArray()
         table.reloadData()
         //table = tableViewController.tableView
@@ -48,7 +48,7 @@ class StepsRecordViewController: UIViewController,UITableViewDelegate,UITableVie
     func refresh(sender:AnyObject) {
         self.table.delegate = self
         self.table.dataSource = self
-        SqlConnection().displayAll(updateArray)
+        SqlConnection().displayAll(ApplicationSession.loginedUserId,function: updateArray)
         addDisplayArray()
         table.reloadData()
         self.refreshControl.endRefreshing()
