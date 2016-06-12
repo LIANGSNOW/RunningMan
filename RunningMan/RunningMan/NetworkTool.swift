@@ -31,8 +31,13 @@ class NetworkTool {
         request.HTTPMethod = method
         session.dataTaskWithRequest(request){
             (data, response, error) -> Void in
-            self.responseString = NSString(data: data!, encoding:  NSUTF8StringEncoding)!
-            function(self.responseString as String)
+            if(data != nil){
+                self.responseString = NSString(data: data!, encoding:  NSUTF8StringEncoding)!
+                function(self.responseString as String)
+            } else{
+                print("network error happens")
+            }
+            
         }.resume()
     }
     
