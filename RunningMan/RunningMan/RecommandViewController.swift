@@ -21,12 +21,12 @@ class RecommandViewController: UIViewController{
     
     override func viewDidLoad() {
             super.viewDidLoad()
-        sleepTimeArray.addObject("6")
         sleepTimeArray.addObject("8")
-        sleepTimeArray.addObject("10")
+        sleepTimeArray.addObject("8")
+        sleepTimeArray.addObject("8")
         sleepQualityArray.addObject("H")
-        sleepQualityArray.addObject("M")
-        sleepQualityArray.addObject("L")
+        sleepQualityArray.addObject("H")
+        sleepQualityArray.addObject("H")
         
         let randomTime:UInt32 = arc4random_uniform(3)
         let randomQuality:UInt32 = arc4random_uniform(3)
