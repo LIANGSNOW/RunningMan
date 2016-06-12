@@ -14,8 +14,9 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var name : SkyFloatingLabelTextField!
     @IBOutlet weak var gender : SkyFloatingLabelTextField!
     @IBOutlet weak var age : SkyFloatingLabelTextField!
-    @IBOutlet weak var weight : UITextField!
-    @IBOutlet weak var height : UITextField!
+    @IBOutlet weak var weight : SkyFloatingLabelTextField!
+    @IBOutlet weak var height : SkyFloatingLabelTextField!
+    @IBOutlet weak var Email : SkyFloatingLabelTextField!
     @IBOutlet weak var confirmButton :UIButton!
     @IBOutlet weak var changeButton :UIButton!
     @IBOutlet weak var logOutButton :UIButton!
@@ -79,16 +80,34 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.gender.selectedTitle   = NSLocalizedString("Gender", tableName: "SkyFloatingLabelTextField", comment: "")
         self.gender.title           = NSLocalizedString("Gender", tableName: "SkyFloatingLabelTextField", comment: "")
         
+        self.weight.placeholder     = NSLocalizedString("Weight", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.weight.selectedTitle   = NSLocalizedString("Weight", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.weight.title           = NSLocalizedString("Weight", tableName: "SkyFloatingLabelTextField", comment: "")
+
+        self.height.placeholder     = NSLocalizedString("Height", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.height.selectedTitle   = NSLocalizedString("Height", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.height.title           = NSLocalizedString("Height", tableName: "SkyFloatingLabelTextField", comment: "")
+
+        self.Email.placeholder     = NSLocalizedString("Email", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.Email.selectedTitle   = NSLocalizedString("Email", tableName: "SkyFloatingLabelTextField", comment: "")
+        self.Email.title           = NSLocalizedString("Email", tableName: "SkyFloatingLabelTextField", comment: "")
+
         
         self.applySkyscannerTheme(self.account)
         self.applySkyscannerTheme(self.name)
         self.applySkyscannerTheme(self.gender)
         self.applySkyscannerTheme(self.age)
+        self.applySkyscannerTheme(self.weight)
+        self.applySkyscannerTheme(self.height)
+        self.applySkyscannerTheme(self.Email)
 
         self.account.delegate = self
         self.name.delegate = self
         self.gender.delegate = self
         self.age.delegate = self
+        self.weight.delegate = self
+        self.height.delegate = self
+        self.Email.delegate = self
        
     }
     
@@ -110,7 +129,7 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBAction func confirm(sender : AnyObject){
 
-        var jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!]
+        var jsonData = ["account" : self.account.text!, "name" : self.name.text!, "sex" : self.gender.text!, "age" : self.age.text!,"height" : self.height.text!,"weight": self.weight.text!, "email": self.Email.text!]
         var dataString : NSString = ""
         
         if(self.userImage.image != nil ){
@@ -132,9 +151,12 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         let anotherString : String =  "\"name\":\"" + jsonData["name"]! + "\","
         let anotherString1 : String = "\"age\":\"" + jsonData["age"]! + "\","
         let anotherString2 : String =  "\"sex\":\"" + jsonData["sex"]! + "\","
-        let anotherString3 : String = "\"img\":\"" + jsonData["img"]! + "\"}"
+        let anotherString3 : String = "\"img\":\"" + jsonData["img"]! + "\","
+        let anotherString4 : String = "\"height\":\"" + jsonData["height"]! + "\","
+        let anotherString5 : String = "\"weight\":\"" + jsonData["weight"]! + "\","
+        let anotherString6 : String = "\"email\":\"" + jsonData["email"]! + "\"}"
         
-        let url = start + anotherString + anotherString1 + anotherString2 + anotherString3
+        let url = start + anotherString + anotherString1 + anotherString2 + anotherString3 + anotherString4 + anotherString5 + anotherString6
         print(url)
 
         NetworkTool.networkTool.urlRequest(url, function: modifyUserInfo, method: "POST")
@@ -151,6 +173,15 @@ class UserInfoViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         if(dictionary!["age"] != nil){
             self.age.text = (dictionary!["age"] as! String)
+        }
+        if(dictionary!["height"] != nil){
+            self.height.text = (dictionary!["height"] as! String)
+        }
+        if(dictionary!["weight"] != nil){
+            self.weight.text = (dictionary!["weight"] as! String)
+        }
+        if(dictionary!["email"] != nil){
+            self.Email.text = (dictionary!["email"] as! String)
         }
         
         if(dictionary!["img"]as! String! != "" ){
