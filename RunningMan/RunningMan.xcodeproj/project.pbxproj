@@ -12,6 +12,7 @@
 		043C36641CE368C80036367E /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C36611CE368C80036367E /* SkyFloatingLabelTextField.swift */; };
 		043C36651CE368C80036367E /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C36621CE368C80036367E /* SkyFloatingLabelTextFieldWithIcon.swift */; };
 		043C36661CE368C80036367E /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C36631CE368C80036367E /* UITextField+fixCaretPosition.swift */; };
+		044661F81D0C768400BD1A59 /* RecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044661F71D0C768400BD1A59 /* RecommandViewController.swift */; };
 		04FD2E821CDB92A700832B81 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04FD2E811CDB92A700832B81 /* CoreLocation.framework */; };
 		3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */; };
 		3A26AA6E1CDADCA40042D3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A26AA6C1CDADCA40042D3F7 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		043C36611CE368C80036367E /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		043C36621CE368C80036367E /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
 		043C36631CE368C80036367E /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
+		044661F71D0C768400BD1A59 /* RecommandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandViewController.swift; sourceTree = "<group>"; };
 		04FD2E811CDB92A700832B81 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3A26AA631CDADCA40042D3F7 /* RunningMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A26AA661CDADCA40042D3F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				3A26AA9F1CDAEE1E0042D3F7 /* ChangePasswordViewController.swift */,
 				3A26AAAD1CDAF4AE0042D3F7 /* RegisterViewController.swift */,
 				3AB029501CDF1E7000479AE0 /* InfoListDetailController.swift */,
+				044661F71D0C768400BD1A59 /* RecommandViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				3A26AAA01CDAEE1E0042D3F7 /* ChangePasswordViewController.swift in Sources */,
 				043C36641CE368C80036367E /* SkyFloatingLabelTextField.swift in Sources */,
 				3A26AA671CDADCA40042D3F7 /* AppDelegate.swift in Sources */,
+				044661F81D0C768400BD1A59 /* RecommandViewController.swift in Sources */,
 				3AB029511CDF1E7000479AE0 /* InfoListDetailController.swift in Sources */,
 				3A26AAA41CDAEEBD0042D3F7 /* RankingViewController.swift in Sources */,
 				3AB0294D1CDEF16F00479AE0 /* ApplicationSession.swift in Sources */,

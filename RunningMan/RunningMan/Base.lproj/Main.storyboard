@@ -269,7 +269,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxu-E3-zAR">
                                 <rect key="frame" x="277" y="457" width="63" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHQ-Ey-I8Q">
@@ -555,6 +555,56 @@
             </objects>
             <point key="canvasLocation" x="565.5" y="1160.5"/>
         </scene>
+        <!--Recommand View Controller-->
+        <scene sceneID="fR5-ir-JJO">
+            <objects>
+                <viewController id="qEE-bo-wzY" customClass="RecommandViewController" customModule="RunningMan" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tgs-G5-kqs"/>
+                        <viewControllerLayoutGuide type="bottom" id="ouS-1u-luu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qJa-YP-Udx" customClass="R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jEn-9y-LRz">
+                                <rect key="frame" x="69" y="134" width="236" height="170"/>
+                                <color key="backgroundColor" red="0.56936276730329272" green="1" blue="0.98115958711005702" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="111">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J31-RD-2ka">
+                                <rect key="frame" x="69" y="372" width="236" height="168"/>
+                                <color key="backgroundColor" red="0.60928640042354965" green="1" blue="0.99049063289934092" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Waiting for calculating">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="light"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30344657069696357" green="0.77142353753033721" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="recomSlep" destination="J31-RD-2ka" id="etZ-64-5h1"/>
+                        <outlet property="recomStep" destination="jEn-9y-LRz" id="Zc7-Rh-e7t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDX-Y6-Oqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1750.5" y="-1183.5"/>
+        </scene>
         <!--ChangePassword-->
         <scene sceneID="j8t-nA-LH7">
             <objects>
@@ -654,90 +704,129 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KbL-ns-BJF">
-                                <rect key="frame" x="131" y="87" width="112" height="110"/>
+                                <rect key="frame" x="131" y="72" width="112" height="110"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cY-UQ-Haw">
-                                <rect key="frame" x="42" y="272" width="64" height="21"/>
+                                <rect key="frame" x="42" y="243" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayc-E8-cWw">
-                                <rect key="frame" x="61" y="319" width="45" height="21"/>
+                                <rect key="frame" x="61" y="292" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ede-jy-scN">
-                                <rect key="frame" x="49" y="368" width="57" height="21"/>
+                                <rect key="frame" x="49" y="335" width="57" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsX-3t-ncz">
-                                <rect key="frame" x="76" y="418" width="30" height="21"/>
+                                <rect key="frame" x="68" y="377" width="30" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHv-7e-FDv">
-                                <rect key="frame" x="47" y="481" width="138" height="30"/>
+                                <rect key="frame" x="35" y="518" width="138" height="30"/>
                                 <state key="normal" title="Confirm Change"/>
                                 <connections>
                                     <action selector="confirm:" destination="453-VB-sFa" eventType="touchUpInside" id="2MA-Bn-hA3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-CS-yNK">
-                                <rect key="frame" x="197" y="481" width="128" height="30"/>
+                                <rect key="frame" x="213" y="518" width="128" height="30"/>
                                 <state key="normal" title="Change Password"/>
                                 <connections>
                                     <segue destination="2Gf-fD-Otd" kind="show" id="zs0-lp-0PD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-ka-w0f">
-                                <rect key="frame" x="49" y="217" width="280" height="30"/>
-                                <state key="normal" title="Select a title image"/>
-                                <connections>
-                                    <action selector="selectTitleImage:" destination="453-VB-sFa" eventType="touchUpInside" id="EhK-07-iBf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxC-S2-L9c">
-                                <rect key="frame" x="51" y="538" width="278" height="30"/>
+                                <rect key="frame" x="47" y="568" width="278" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="logout:" destination="453-VB-sFa" eventType="touchUpInside" id="6oq-Fo-cgF"/>
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F7T-RW-iYC" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
-                                <rect key="frame" x="146" y="255" width="203" height="35"/>
+                                <rect key="frame" x="146" y="236" width="203" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gc9-MW-xMw" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
-                                <rect key="frame" x="146" y="306" width="203" height="34"/>
+                                <rect key="frame" x="145" y="286" width="203" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-hs-zlC" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
-                                <rect key="frame" x="146" y="360" width="203" height="35"/>
+                                <rect key="frame" x="145" y="328" width="203" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQV-KB-7AU" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
-                                <rect key="frame" x="146" y="405" width="203" height="35"/>
+                                <rect key="frame" x="146" y="370" width="203" height="35"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHd-dS-ZTu">
+                                <rect key="frame" x="61" y="420" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUH-Gt-GvP">
+                                <rect key="frame" x="28" y="471" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdV-JQ-XcZ">
+                                <rect key="frame" x="189" y="476" width="54" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XfC-UY-Ybb" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
+                                <rect key="frame" x="146" y="414" width="203" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JTV-y5-PXa" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
+                                <rect key="frame" x="87" y="466" width="86" height="32"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mX6-6n-Mj9" customClass="SkyFloatingLabelTextField" customModule="RunningMan" customModuleProvider="target">
+                                <rect key="frame" x="252" y="464" width="97" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PY-ka-w0f">
+                                <rect key="frame" x="47" y="190" width="280" height="30"/>
+                                <state key="normal" title="Select a title image"/>
+                                <connections>
+                                    <action selector="selectTitleImage:" destination="453-VB-sFa" eventType="touchUpInside" id="EhK-07-iBf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KyL-L0-isQ"/>
+                    <navigationItem key="navigationItem" id="KyL-L0-isQ">
+                        <barButtonItem key="rightBarButtonItem" title="Recommand" id="Jxb-bs-Cgk">
+                            <connections>
+                                <segue destination="qEE-bo-wzY" kind="show" id="mX0-Mk-wBv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="Email" destination="XfC-UY-Ybb" id="pgJ-TM-YCN"/>
                         <outlet property="account" destination="F7T-RW-iYC" id="K1Z-Sn-KWF"/>
                         <outlet property="age" destination="sQV-KB-7AU" id="wmS-oA-f6W"/>
                         <outlet property="changeButton" destination="W6A-CS-yNK" id="D77-kH-aPe"/>
                         <outlet property="confirmButton" destination="iHv-7e-FDv" id="3yB-dE-vnv"/>
                         <outlet property="gender" destination="2ze-hs-zlC" id="jXc-jm-jcw"/>
+                        <outlet property="height" destination="JTV-y5-PXa" id="hPd-kB-fgi"/>
                         <outlet property="logOutButton" destination="jxC-S2-L9c" id="9N2-dn-uRh"/>
                         <outlet property="name" destination="gc9-MW-xMw" id="bmO-ZQ-eKi"/>
                         <outlet property="userImage" destination="KbL-ns-BJF" id="K7q-Wh-MqH"/>
+                        <outlet property="weight" destination="mX6-6n-Mj9" id="gEC-gG-sFa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BUG-1g-Vj7" userLabel="First Responder" sceneMemberID="firstResponder"/>

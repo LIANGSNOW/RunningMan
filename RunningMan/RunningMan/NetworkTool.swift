@@ -15,7 +15,7 @@ class NetworkTool {
     var session : NSURLSession
     var responseString : NSString = ""
     
-    static let serverIP = "192.168.0.16:8080"
+    static let serverIP = "balancer1-1168560003.ap-southeast-1.elb.amazonaws.com:8080"
     
     static let networkTool = NetworkTool()
     
